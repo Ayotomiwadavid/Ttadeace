@@ -7,11 +7,3 @@
 #showMenuId{
   top: 65px;
 }
-
-#underNeatImage{
-  width: 100%;
-  height: 170px;
-  background-image: url('../src/images/stats.PNG');
-  background-size: cover;
-  background-position: center;
-}

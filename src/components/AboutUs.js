@@ -4,10 +4,11 @@ import outstandingsvg from '../images/outstanding-svg.png'
 import competitivesvg from '../images/competitive-svg.png'
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import { Link } from 'react-router-dom';
+import './about.css'
 
 const AboutUs = () => {
     return (
-        <section className=' flex flex-col md:px-8 md:py-[50px]'>
+        <section className=' flex flex-col items-center justify-center md:px-8 md:py-[50px]'>
             <main className='flex flex-col items-center justify-center'>
                 <h1 className='w-full text-2xl text-left font-bold font-sans md:text-4xl text-logo-color capitalize p-3'>why choose trade ace?</h1>
                 <div className='container px-[5vw] w-full flex flex-col gap-3 items-center justify-center md:flex-row'>
