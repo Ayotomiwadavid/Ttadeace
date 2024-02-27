@@ -48,31 +48,31 @@ const AboutUs = () => {
                     <h6 className='font-bold text-logo-color text-base capitalize shrink-0'>24h volume: <span className='text-blue-text-color'>$1,304,398,875</span></h6>
                     <h6 className='font-bold text-logo-color text-base capitalize  shrink-0'>cryptocurrencies: <span className='text-blue-text-color'>15</span></h6>
                 </div>
-                <div className='flex flex-col items-center justify-end py-10 w-[800px] w-full'>
-                    <div className='flex w-full items-center justify-center bg-slate-50 px-11 h-[130px]'>
+                <div className='flex flex-col pl-[300px] items-center justify-center w-[1000px] md:pl-0 md:w-full'>
+                    <div className='flex w-full items-center justify-center bg-slate-50 h-[130px] shrink-0'>
                         <div className='flex items-center justify-between w-4/5 mr-5'>
-                            <div className='w-1/3 flex pl-10  p-5 items-center justify-between gap-6'>
+                            <div className=' shrink-0 md:w-1/3 flex pl-10 p-5 items-center justify-between gap-6'>
                                 <h5 className='text-3xl text-logo-color capitalize font-bold font-sans '>USD</h5>
                                 <h4 className='text-4xl text-blue-text-color font-bold font-sans'>10,000</h4>
                             </div>
                             {/* Exchange Logo */}
-                            <div className='flex items-center justify-center h-[50px] w-[50px] rounded-full bg-logo-color'>
+                            <div className=' shrink-0 flex items-center justify-center h-[50px] w-[50px] rounded-full bg-logo-color'>
                                 <SyncAltIcon style={{
                                     width: '20px',
                                     height: '20px',
                                     color: 'white'
                                 }} />
                             </div>
-                            <div className='w-1/3 flex pl-10  p-5 items-center justify-between gap-6'>
+                            <div className=' shrink-0 md:w-1/3 flex pl-10  p-5 items-center justify-between gap-6'>
                                 <h5 className='text-3xl text-logo-color capitalize font-bold font-sans '>BTC</h5>
                                 <h4 className='text-4xl text-blue-text-color font-bold font-sans'>1.51352</h4>
                             </div>
                         </div>
                         <Link to='/signup'>
-                            <button className=' flex items-center justify-center rounded-md h-[45px] w-[150px] p-5 text-center text-white bg-blue-text-color'>Get started</button>
+                            <button className=' flex items-center justify-center rounded-md h-[45px] p-1 w-[100px] md:w-[150px] md:p-5 text-center text-white bg-blue-text-color'>Get started</button>
                         </Link>
                     </div>
-                    <div className='flex gap-1 p-5 items-center justify-center h-[130px] bg-logo-color'>
+                    <div className='flex gap-1 p-5 items-center justify-center h-[130px] bg-logo-color w-full shrink-0'>
                         <div className='flex items-center justify-center w-1/6 p-2'>
                             <div className='flex flex-col items-center justify-center w-3/5 mr-2'>
                                 <p className='text-left text-white font-sans uppercase text-lg font-bold'>btc/usd</p>
