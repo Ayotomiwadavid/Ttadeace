@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Herosection from '../components/Herosection'
 import AboutUs from '../components/AboutUs'
 import Difference from '../components/Difference'
+import Easy from '../components/Easy'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Herosection />
       <AboutUs />
       <Difference />
+      <Easy />
     </section>
   )
 }

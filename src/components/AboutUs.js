@@ -42,7 +42,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </main>
-            <aside className='flex flex-col items-center justify-center w-full px-1 md:px-[10vw] md:py-[50px] overflow-x-scroll'>
+            <aside className='no-scrollbar flex flex-col items-center justify-center w-full px-1 md:px-[10vw] md:py-[50px] overflow-x-scroll'>
                 <div className='flex gap-5 md:px-11 items-center justify-end flex-wrap w-[750px] md:w-4/5 mb-3'>
                     <h3 className='text-logo-color font-bold font-serif text-3xl md:text-4xl shrink-0'>Exchange</h3>
                     <h6 className='font-bold text-logo-color text-base capitalize shrink-0'>24h volume: <span className='text-blue-text-color'>$1,304,398,875</span></h6>

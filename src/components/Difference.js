@@ -3,6 +3,7 @@ import differenceImg from '../images/counts.PNG'
 import SettingsIcon from '@mui/icons-material/Settings';
 import CachedIcon from '@mui/icons-material/Cached';
 import WifiIcon from '@mui/icons-material/Wifi';
+import ListComponent from './ListComponent';
 
 const Difference = () => {
   return (
@@ -10,6 +11,11 @@ const Difference = () => {
       <section className='flex flex-col items-start justify-center w-full mb-6 md:w-4/6'>
         <h1 className='md:w-4/5 w-full text-left text-2xl font-bold font-sans text-logo-color p-2 md:text-5xl md:p-8'>What makes Trade Ace different?</h1>
         <div className='flex flex-col w-full gap-1 items-center justify-center'>
+        <ListComponent 
+          iconName="SettingsIcon"
+          listTitlle="tick market data"
+          listDescrion='instant order book update with each change'
+        />
           <div className='flex w-full items-center justify-start py-5 md:px-5 md:py-3'>
             <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center bg-logo-color mr-1 md:mr-3'>
               <SettingsIcon
