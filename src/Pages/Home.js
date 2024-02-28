@@ -10,6 +10,7 @@ const Home = () => {
       <Header />
       <Herosection />
       <AboutUs />
+      <Difference />
     </section>
   )
 }
