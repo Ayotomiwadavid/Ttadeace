@@ -4,17 +4,20 @@ import CachedIcon from '@mui/icons-material/Cached';
 import WifiIcon from '@mui/icons-material/Wifi';
 
 const ListComponent = (props) => {
-    let { iconName, listTitlle, listDescrion } = props
-    const CustomTag = iconName
+    let { iconName, listTitlle, listDescrion, tag, tagContent } = props
+    const CustomIconTag = iconName
     return (
         <div className='flex w-full items-center justify-start py-5 md:px-5 md:py-3'>
             {
-                CustomTag && <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center bg-logo-color mr-1 md:mr-3'>
-                    <CustomTag
+                CustomIconTag && <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center bg-logo-color mr-1 md:mr-3'>
+                    <CustomIconTag
                         style={{
                             color: "#fff",
                             fontSize: '20px'
                         }} />
+                </div> || tag &&
+                <div className='w-[50px] h-[50px] rounded-full flex items-center justify-center mr-1 md:mr-3'>
+                  <tag className="font-bold text-4xl text-blue-text-color text-center">{tagContent}</tag>
                 </div>
             }
             <div className='flex flex-col pl-3 md:pl-6 items-start justify-center'>

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import './about.css'
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
+import Getstarted from './Getstarted';
 
 const AboutUs = () => {
     return (
@@ -68,9 +69,9 @@ const AboutUs = () => {
                                 <h4 className='text-4xl text-blue-text-color font-bold font-sans'>1.51352</h4>
                             </div>
                         </div>
-                        <Link to='/signup'>
-                            <button className=' flex items-center justify-center rounded-md h-[45px] p-1 w-[100px] md:w-[150px] md:p-5 text-center text-white bg-blue-text-color'>Get started</button>
-                        </Link>
+                        <Getstarted 
+                            content="get started"
+                        />
                     </div>
                     <div className='flex gap-1 p-5 items-center justify-center h-[130px] bg-logo-color w-full shrink-0'>
                         <div className='flex items-center justify-center w-1/6 p-2'>
