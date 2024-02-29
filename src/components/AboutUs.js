@@ -26,7 +26,7 @@ const AboutUs = () => {
                     <div className='items-center justify-center w-full p-2 flex flex-col md:items-start md:justify-start md:w-1/3'>
                         <img className='w-[150px] h-[150px]' src={outstandingsvg} alt='about img' />
                         <h4 className='font-bold capitalize p-2 text-center md:text-left w-full text-xl text-logo-color font-serif'>outstanding services</h4>
-                        <p className='text-small-text-color p-2 md:text-left w-4/5 leading-6 text-sm capitalize text-center'>
+                        <p className='text-small-text-color p-2 md:text-left md:w-4/5 leading-6 text-sm capitalize text-center'>
                             We've got you covered on all fronts. Enjoy extra-quick
                             verification and withdrawals, 24/7 support in your language,
                             2-factor authentication and cold storage.
@@ -35,7 +35,7 @@ const AboutUs = () => {
                     <div className='items-center justify-center w-full p-2 flex flex-col md:items-start md:justify-start md:w-1/3'>
                         <img className='w-[150px] h-[150px]' src={competitivesvg} alt='about img' />
                         <h4 className='font-bold capitalize p-2 text-center md:text-left w-full text-xl text-logo-color font-serif'>competitive rates</h4>
-                        <p className='text-small-text-color p-2 md:text-left w-4/5 leading-6 text-sm capitalize text-center'>
+                        <p className='text-small-text-color p-2 md:text-left md:w-4/5 leading-6 text-sm capitalize text-center'>
                             We dare you to find lower     commission rates.
                             Trade Ace charges just 0.05% per trading order.
                             That's x3 lower than the industry's average.
@@ -43,7 +43,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </main>
-            <aside className='no-scrollbar flex flex-col items-center justify-center w-full px-1 md:px-[10vw] md:py-[50px] overflow-x-scroll'>
+            <aside className='no-scrollbar flex flex-col items-center justify-center w-full py-[30px] px-1 md:px-[10vw] md:py-[50px] overflow-x-scroll'>
                 <div className='flex gap-5 md:px-11 items-center justify-end flex-wrap w-[750px] md:w-4/5 mb-3'>
                     <h3 className='text-logo-color font-bold font-serif text-3xl md:text-4xl shrink-0'>Exchange</h3>
                     <h6 className='font-bold text-logo-color text-base capitalize shrink-0'>24h volume: <span className='text-blue-text-color'>$1,304,398,875</span></h6>

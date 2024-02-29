@@ -7,7 +7,7 @@ const Getstarted = (props) => {
     let CustomButtonIcon = buttonIcon
     return (
         <Link to='/signup'>
-            <button className={CustomButtonIcon ? 'capitalize px-2 font-bold flex items-center justify-between rounded-md h-[45px] p-1 w-[100px] md:w-[200px] md:p-5 text-center text-white bg-blue-text-color' : 'capitalize gap-2 font-bold flex items-center justify-center rounded-md h-[45px] p-1 w-[100px] md:w-[150px] md:p-5 text-center text-white bg-blue-text-color'}>
+            <button className={CustomButtonIcon ? 'capitalize px-2 font-bold flex items-center gap-x-4 justify-center rounded-md h-[45px] p-1 w-[250px] md:w-[200px] md:p-5 text-center text-white bg-blue-text-color' : 'capitalize gap-2 font-bold flex items-center justify-center rounded-md h-[45px] p-1 w-[100px] md:w-[150px] md:p-5 text-center text-white bg-blue-text-color'}>
                 {content} 
                 {
                     CustomButtonIcon && <CustomButtonIcon />
