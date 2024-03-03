@@ -17,7 +17,7 @@ const Header = () => {
     <Link to='/signin'>
       <button className='transition duration-700 outline-none text-sx capitalize text-white px-5 py-2 text-center hover:border-white hover:border-[1px] rounded-sm'>sign in</button>
     </Link>
-    <Link to='/sign up'>
+    <Link to='/signup'>
       <button className='transition duration-700 outline-none text-sx capitalize border-white border-[1px] bg-transparent text-white px-5 py-2 text-center rounded-sm'>sign up</button>
     </Link>
     </div>
