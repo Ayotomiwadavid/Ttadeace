@@ -9,7 +9,9 @@ import Footer from '../components/Footer'
 const Home = () => {
   return (
     <section className='w-full bg-overallBg'>
-      <Header />
+      <Header 
+        navItems = {true}
+      />
       <Herosection />
       <AboutUs />
       <Difference />

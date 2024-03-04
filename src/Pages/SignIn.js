@@ -4,9 +4,9 @@ import Header from '../components/Header'
 
 const SignIn = () => {
   return (
-    <>
+    <div className='w-full'>
       <Header 
-        navItems = 'false'
+        navItems = {false}
       />
       <main className='flex w-full items-center justify-between h-lvh'>
         <Form />
@@ -14,7 +14,7 @@ const SignIn = () => {
           <img className='w-full h-full' src='https://www.wpbeginner.com/wp-content/uploads/2018/09/bestaccountingsoftware.png' alt='hero section image' />
         </div>
       </main>
-    </>
+    </div>
   )
 }
 
