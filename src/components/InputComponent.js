@@ -8,7 +8,7 @@ const InputComponent = (props) => {
 
   return (
     <>
-      <div className='relative w-[80%] h-[50px] flex items-center justify-center m-[10px]'>
+      <div className='relative w-[95%] p-[15px] py-0 md:p-0 md:w-[80%] h-[50px] flex items-center justify-center m-[10px]'>
         {CustomIconTag &&
           <IconName
             style={{
@@ -18,9 +18,9 @@ const InputComponent = (props) => {
             }}
           />
         }
-        <input type={type} name={name} placeholder={inputplaceholder} className='outline-none border-none h-[45px] w-[80%] p-[10px] rounded-sm placeholder:capitalize placeholder:text-logo-color placeholder:text-sm text-xl text-logo-color' />
+        <input type={type} name={name} placeholder={inputplaceholder} className='outline-none border-none h-[45px] w-full md:w-[80%] p-[10px] rounded-sm placeholder:capitalize placeholder:text-logo-color placeholder:text-sm text-xl text-logo-color' />
         {
-          name === 'password' && <div className='absolute right-[50px]' onClick={clickFunction}>
+          name === 'password' && <div className='absolute right-[30px] md:right-[50px]' onClick={clickFunction}>
             {
               visibilityStatus ? <VisibilityOffIcon
                 style={{

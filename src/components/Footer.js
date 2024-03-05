@@ -7,13 +7,13 @@ const Footer = () => {
     return (
         <footer className='flex flex-col items-center justify-center w-full'>
             <aside className='flex w-full'>
-                <Link to='/signup' className='flex items-center justify-center gap-y-3 w-1/2 bg-blue-text-color'>
+                <Link to='/sign/up' className='flex items-center justify-center gap-y-3 w-1/2 bg-blue-text-color'>
                     <div className='flex flex-col gap-y-3 px-2 md:px-[5vw] py-4 w-full'>
                     <h1 className='font-sans font-bold text-xl md:text-3xl capitalize w-full text-center md:text-end md:pr-7 text-overallBg'>sign up now</h1>
                     <p className='font-sans font-light text-overallBg w-full text-end pr-7 hidden md:block'>to discover a more efficient way to trade</p>
                     </div>
                 </Link>
-                <Link to='/signin' className='flex items-center justify-center w-1/2 bg-white'>
+                <Link to='/sign/in' className='flex items-center justify-center w-1/2 bg-white'>
                     <div className='flex flex-col gap-y-3 px-2 md:px-[5vw] py-4 w-full'>
                     <h1 className='font-sans font-bold text-xl md:text-3xl capitalize w-full text-center md:text-start md:pl-7 text-logo-color'>sign in</h1>
                     <p className='font-sans font-light text-logo-color w-full text-start pl-7 hidden md:block'>to start making profit from trade ace</p>
