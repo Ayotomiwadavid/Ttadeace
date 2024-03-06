@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Form from '../components/Form'
 import Header from '../components/Header'
 import { Link, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
   let { status } = useParams();
@@ -15,6 +17,7 @@ const SignIn = () => {
       <Header
         navItems={false}
       />
+      <ToastContainer />
       <main className='flex w-full items-center justify-between h-lvh'>
         <div className='flex flex-col w-full md:w-1/2'>
           <div className='hidden px-10 mt-10 md:flex w-full items-center justify-start gap-10'>
@@ -31,7 +34,7 @@ const SignIn = () => {
           <Form />
           {
             status === 'up' && <div className='w-full px-[15px] py-[15px] flex items-center justify-center'>
-              <input type='checkbox' className='mx-[10px] w-[15px] h-[15px]' />
+              <input type='checkbox' className='mx-[10px] w-[15px] h-[15px]'/>
               <p className='w-6/6 text-sm md:text-lg text-logo-color capitalize items-end justify-end mt-[15px]  md:w-4/6 '>i accept the <Link to='/termsandconditions' className='text-blue-text-color underline'>terms & conditions</Link> and confirm that I'm 18yrs or older</p>
             </div>
           }

@@ -1,6 +1,5 @@
 import React from 'react'
 import logo from '../images/acetradeLogo.png'
-import { Grid, Typography } from '@mui/material'
 import "@fontsource/noto-sans";
 
 const Logo = () => {

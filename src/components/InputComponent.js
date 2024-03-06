@@ -3,7 +3,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const InputComponent = (props) => {
-  let { IconName, type, inputplaceholder, name, visibilityStatus, clickFunction} = props
+  let { IconName, type, inputplaceholder, name, visibilityStatus, clickFunction, inputValue, onChnage} = props
   const CustomIconTag = IconName;
 
   return (
@@ -18,7 +18,7 @@ const InputComponent = (props) => {
             }}
           />
         }
-        <input type={type} name={name} placeholder={inputplaceholder} className='outline-none border-none h-[45px] w-full md:w-[80%] p-[10px] rounded-sm placeholder:capitalize placeholder:text-logo-color placeholder:text-sm text-xl text-logo-color' />
+        <input type={type} name={name} value={inputValue} placeholder={inputplaceholder} className='outline-none border-none h-[45px] w-full md:w-[80%] p-[10px] rounded-sm placeholder:capitalize placeholder:text-logo-color placeholder:text-sm text-xl text-logo-color' onChange={onChnage} />
         {
           name === 'password' && <div className='absolute right-[30px] md:right-[50px]' onClick={clickFunction}>
             {
