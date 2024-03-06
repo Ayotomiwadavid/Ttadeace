@@ -38,7 +38,6 @@ const Form = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged((userCred) => {
-      navigate('/dashboard')
     })
   }, []);
 
@@ -47,6 +46,7 @@ const Form = () => {
     .then((userCredential) => {
       const user = userCredential.user;
       toast.success("You're have been signed in successfull")
+      navigate('/dashboard')
     })
     .catch((error) => {
       toast.error('failed to sign you in');
