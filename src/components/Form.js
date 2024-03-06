@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Input from './InputComponent';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import HttpsIcon from '@mui/icons-material/Https';
-import { useParams,  useNavigate } from 'react-router-dom';
+import { useParams,  useNavigate} from 'react-router-dom';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +11,7 @@ import { auth } from '../config/firebase.config';
 
 const Form = () => {
   const navigate = useNavigate()
+
   let [visibility, setVisibility] = useState(false)
   let { status } = useParams();
   let handleVisibility = () => {
@@ -37,15 +38,15 @@ const Form = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged((userCred) => {
+      navigate('/dashboard')
     })
   }, []);
 
   let signIn = async () =>{
    await  signInWithEmailAndPassword( auth, email, password)
     .then((userCredential) => {
-      // Signed in 
       const user = userCredential.user;
-      navigate.push('/dashboard')
+      toast.success("You're have been signed in successfull")
     })
     .catch((error) => {
       toast.error('failed to sign you in');
@@ -54,10 +55,8 @@ const Form = () => {
 
   let signUp = async () => {
     await createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        // Signed up 
+      .then(async (userCredential) => { 
         const user = userCredential.user;
-        // SENDING VERIFICATION EMAIL TO USER
         await sendEmailVerification(user)
         toast.success('Check your email for confirmation link')
       })
