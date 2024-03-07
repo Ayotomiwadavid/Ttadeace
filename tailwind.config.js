@@ -24,6 +24,7 @@ module.exports = {
         'small-text-color': '#8397e8',
         'blue-text-color': '#3555da',
         'neon-blue': 'hsl(227, 100%, 56%)',
+        'border-color': 'rgb(241, 233, 233)',
       },
     },
   },
