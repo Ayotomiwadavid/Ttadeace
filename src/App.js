@@ -12,7 +12,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/sign/:status' element={<SignUp />} />
       <Route path='*' element={<Pagenotfound />} />
-      <Route path='/dashboard' element={<Dashboard />}/>
+      <Route path='/dashboard' replace element={<Dashboard />}/>
     </Routes>
     </main>
   );

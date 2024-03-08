@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Input from './InputComponent';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import HttpsIcon from '@mui/icons-material/Https';
-import { useParams,  useNavigate} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-import { auth } from '../config/firebase.config';
+import { app, auth } from '../config/firebase.config';
+import { getDatabase, ref, set, push } from 'firebase/database'
 
 const Form = () => {
   const navigate = useNavigate()
@@ -19,10 +20,12 @@ const Form = () => {
   }
 
   const [inputValue, setInputValue] = useState({
+    userId: '',
     name: '',
     email: '',
     password: ''
   });
+  
   let handleChange = (event) => {
     const { name, value } = event.target
     setInputValue((prevValue) => {
@@ -36,29 +39,44 @@ const Form = () => {
 
   const { email, password, name } = inputValue;
 
-  useEffect(() => {
-    auth.onAuthStateChanged((userCred) => {
+  const saveUser = async () => {
+    let mail = email
+    var atIndex = mail.indexOf('@');
+    var newUserEmail = email.substring(0, atIndex);
+    const db = getDatabase(app);
+    const newDocRef = push(ref(db, `users/${newUserEmail}`));
+    set(newDocRef, {
+      userName: name,
+      userEmail: email,
+      userPassword: password,
+      transactionHistory: []
+    }).then(() => {
+      console.log('data saved sucessfully');
+    }).catch((err) => {
+      console.log(err)
     })
-  }, []);
+  }
 
-  let signIn = async () =>{
-   await  signInWithEmailAndPassword( auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      toast.success("You're have been signed in successfull")
-      navigate('/dashboard')
-    })
-    .catch((error) => {
-      toast.error('failed to sign you in');
-    });
+
+  let signIn = async () => {
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success("You're have been signed in successfull")
+        navigate('/dashboard')
+      })
+      .catch((error) => {
+        toast.error('failed to sign you in');
+      });
   }
 
   let signUp = async () => {
     await createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => { 
+      .then(async (userCredential) => {
         const user = userCredential.user;
         await sendEmailVerification(user)
         toast.success('Check your email for confirmation link')
+        saveUser()
       })
       .catch((err) => {
         toast.error('failed to create your account')
@@ -78,19 +96,19 @@ const Form = () => {
     } else if (inputValue.password.length < 6) {
       toast.error('Password must be greater than six')
     } else {
-        signUp();
+      signUp();
     }
   }
 
-  let handleSignin = (event) =>{
+  let handleSignin = (event) => {
     event.preventDefault()
     if (inputValue.email == '' && inputValue.password == '') {
       toast.error('make sure all inputs are filled')
-    }else if (inputValue.email == '') {
+    } else if (inputValue.email == '') {
       toast.error('Email can not be empty')
     } else if (!inputValue.password.match(/[a-z]+/) || !inputValue.password.match(/[A-Z]+/) || !inputValue.password.match(/[0-9]+/) || !inputValue.password.match(/[$@#&!]+/)) {
       toast.error('Password must contain symbols, numbers and letters(uppercase and lowercase)')
-    }else{
+    } else {
       signIn()
     }
   }
