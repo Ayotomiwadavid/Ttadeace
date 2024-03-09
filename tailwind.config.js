@@ -25,6 +25,7 @@ module.exports = {
         'blue-text-color': '#3555da',
         'neon-blue': 'hsl(227, 100%, 56%)',
         'border-color': 'rgb(241, 233, 233)',
+        'box-shadow' : 'rgba(0, 0, 0, 0.5)',
       },
     },
   },
