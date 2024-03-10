@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ListIcon from "@mui/icons-material/List";
 import logo from "../images/acetradeLogo.png";
 import { app, auth } from "../config/firebase.config";
 import { getDatabase, ref, get } from "firebase/database";
@@ -35,23 +34,15 @@ const Appbar = () => {
   }, []);
 
   return (
-    <div className="border-2 border-solid border-border-color w-full p-2 flex items-center justify-between">
+    <div className="border-b-[1px] border-solid border-border-color w-full p-2 flex items-center justify-between absolute top-0 right-0">
       <div className="flex w-1/2 items-center justify-start px-3">
-        <ListIcon 
-          style={{
-            color: "#252c47",
-            fontSize: '45px',
-            fontWeight: "bolder",
-            cursor: "pointer"
-          }}
-        />
-        <div className="flex items-center md:p-2 justify-start w-1/2">
+        <div className="flex items-center md:p-2 justify-start w-full">
           <img
             src={logo}
             alt="logo"
             className="w-[70px] h-[70px] rounded-full"
           />
-          <span className="font-bold text-sm font-sans text-logo-color md:text-2xl">
+          <span className="font-bold text-sm font-sans text-logo-color md:text-2xl w-full">
             welcome, {user}
           </span>
         </div>
