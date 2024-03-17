@@ -5,7 +5,7 @@ import Dashmain from '../components/Dashmain'
 
 const Dashboard = () => {
   return (
-    <main className='bg-overallBg h-lvh flex items-center justify-between w-full overflow-hidden'>
+    <main className='bg-overallBg h-lvh flex items-center justify-between w-full overflow-hidden relative'>
       <Sidebar />
       <aside className='w-[85%] relative h-[100%] flex items-center justify-center flex-0'>
         <Appbar />
