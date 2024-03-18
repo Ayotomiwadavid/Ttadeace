@@ -29,7 +29,7 @@ const TradingViewChart = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container w-full mb-5">
+    <div className="tradingview-widget-container w-full px-0">
       <div className="tradingview-widget-container__widget h-[80vh] w-full"></div>
     </div>
   );

@@ -34,8 +34,8 @@ const Appbar = () => {
   }, []);
 
   return (
-    <div className="border-b-[1px] border-solid border-border-color w-full p-2 flex items-center justify-between absolute top-0 right-0">
-      <div className="flex w-1/2 items-center justify-start px-3">
+    <div className="border-b-[1px] border-solid border-border-color w-full md:p-2 flex items-center justify-between absolute top-0 right-0">
+      <div className="flex w-full md:w-1/2 items-center justify-start px-3">
         <div className="flex items-center md:p-2 justify-start w-full">
           <img
             src={logo}
@@ -47,8 +47,8 @@ const Appbar = () => {
           </span>
         </div>
       </div>
-      <div className="w-1/2 flex items-center justify-end gap-5">
-        <div className="flex p-2 items-center justify-center border-[1px] border-logo-color rounded-3xl w-[170px] m-4">
+      <div className="w-1/2 hidden md:flex items-center justify-end gap-5">
+        <div className="hidden md:flex p-2 items-center justify-center border-[1px] border-logo-color rounded-3xl w-[170px] m-4">
           <CalendarMonth 
             style={{
               color:"#252c47",
