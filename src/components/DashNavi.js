@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const DashNavi = (props) => {
     let { navigatorName, navigatorIcon, type, onClick, status} = props
@@ -6,7 +6,7 @@ const DashNavi = (props) => {
     let CustomIcon = navigatorIcon;
 
     return (
-        <div className='flex w-full justify-between items-center px-[10px] my-3 cursor-pointer' onClick={type == 'menuBar' ? onClick : null}>
+        <div className='flex w-full justify-between items-center px-[10px] my-3 cursor-pointer' onClick={type === 'menuBar' ? onClick : null}>
             {
                 status && <h4 className='capitalize font-bold text-xl transition-all duration-300 text-logo-color'>{navigatorName}</h4>
             }
