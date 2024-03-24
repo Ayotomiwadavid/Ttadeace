@@ -25,7 +25,7 @@ const Tradingwidget = () => {
     }, []);
   return (
     <div className="tradingview-widget-container w-full">
-      <div className="tradingview-widget-container__widget w-full h-full"></div>
+      <div className="tradingview-widget-container__widget w-full h-[80vh"></div>
     </div>
   )
 }
