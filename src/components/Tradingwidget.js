@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 
 const Tradingwidget = () => {
     useEffect(() => {
-      const script = document.createElement('script');
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
-      script.async = true;
-      script.innerHTML = JSON.stringify({
+      const MarketValues = document.createElement('script');
+      MarketValues.src = 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
+      MarketValues.async = true;
+      MarketValues.innerHTML = JSON.stringify({
         "width": "100%",
         "height": "100%",
         "defaultColumn": "overview",
@@ -17,10 +17,10 @@ const Tradingwidget = () => {
         "isTransparent": true
       });
     
-      document.getElementsByClassName('tradingview-widget-container__widget')[0].appendChild(script);
+      document.getElementsByClassName('tradingview-widget-container__widget')[0].appendChild(MarketValues);
     
       return () => {
-        document.getElementsByClassName('tradingview-widget-container__widget')[0].removeChild(script);
+        document.getElementsByClassName('tradingview-widget-container__widget')[0].removeChild(MarketValues);
       };
     }, []);
   return (
