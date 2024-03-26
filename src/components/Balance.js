@@ -1,15 +1,54 @@
-import React from 'react'
-import cardImage from '../images/bg-card-front.png'
-import Minitrade from './Minitrade'
+import React, { useEffect, useState } from 'react'
+import Minitrade from './Balancecard'
 
 const Balance = (props) => {
+  const [btcExchangeRate, setbtcExchangeRate] = useState('');
+  useEffect(() => {
+    let fetchQuote = async () => {
+      const url = 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '14872a486bmshc55264aa979777fp150d9ejsn10b884389f0d',
+          'X-RapidAPI-Host': 'currency-conversion-and-exchange-rates.p.rapidapi.com'
+        }
+      };
+
+      await fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
+          const btcRate = data.rates.BTC
+          setbtcExchangeRate(btcRate);
+          function btcToUSD(btcAmount, exchangeRate) {
+            return btcAmount * exchangeRate;
+          }
+
+          const exchangeRate = btcRate; // 1 USD to BTC exchange rate
+          const btcEarned = 1500;
+          const usdEarned = btcToUSD(btcEarned, exchangeRate);
+          console.log(usdEarned); // Output will be the equivalent USD amount
+
+
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    fetchQuote()
+  }, [])
+
   return (
-    <div className='w-full rounded-lg bg-neon-blue mb-5 flex items-center justify-between px-5 max-h-[300px] gap-10'>
-      <div className=' py-5 h-full w-1/2 relative'>
-        <img src={cardImage} alt='card img' className='h-[200px] w-full' />
-        <div className='h-[200px] absolute top-[50%] left-[50%] transf'></div>
-      </div>
-      <Minitrade />
+    <div className='w-full rounded-lg bg-neon-blue mb-5 flex-col md:flex items-center justify-center md:justify-between px-5 max-h-[300px] gap-10'>
+      <Minitrade
+        balance='1,500'
+        cardDescription='Your Balance From Your Last Deposit'
+        currencySymbol='usd'
+      />
+      <Minitrade
+        balance={btcExchangeRate}
+        cardDescription='Your earned BTC Balance'
+        currencySymbol='btc'
+      />
     </div>
   )
 }
