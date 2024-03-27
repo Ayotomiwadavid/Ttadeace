@@ -8,9 +8,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Appbar = () => {
   let [user, setUser] = useState("");
 
-
-  let fullDate = new Date().toDateString;
-
   let readUserData = async (email) => {
     var atIndex = email.indexOf("@");
     var newUserEmail = email.substring(0, atIndex);
@@ -73,4 +70,4 @@ const Appbar = () => {
   );
 };
 
-export default Appbar;
+export default {Appbar};

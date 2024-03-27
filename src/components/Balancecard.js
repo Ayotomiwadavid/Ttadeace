@@ -1,6 +1,7 @@
 import React from 'react'
 import cardImage from '../images/bg-card-front.png'
 import { Add } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 const Balancecard = (props) => {
   let {currencySymbol, cardDescription, balance} = props
@@ -11,7 +12,8 @@ const Balancecard = (props) => {
         <div className='w-full items-center justify-between flex px-5'>
           <h1 className='text-white text-lg capitalize font-bold p-5 md:w-[50%] px-0'>{cardDescription}</h1>
           <div className='rounded-full border-2 border-white w-[40px] h-[40px] flex items-center justify-center mb-5'>
-            <Add
+          <Link to='/deposit'>
+          <Add
               style={{
                 fontSize: '35px',
                 fontWeight: 'bolder',
@@ -19,6 +21,7 @@ const Balancecard = (props) => {
                 cursor: 'pointer'
               }}
             />
+          </Link>
           </div>
         </div>
         <p className='text-white font-bold p-10 px-5 w-full text-left text-2xl uppercase'>{balance} {currencySymbol}</p>

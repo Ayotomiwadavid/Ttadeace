@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Input from './InputComponent';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import HttpsIcon from '@mui/icons-material/Https';
@@ -9,9 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { app, auth } from '../config/firebase.config';
 import { getDatabase, ref, set, push } from 'firebase/database'
+import appbar from './Appbar'
 
 const Form = () => {
   const navigate = useNavigate()
+
+  console.log(appbar)
 
   let [visibility, setVisibility] = useState(false)
   let { status } = useParams();
@@ -61,9 +64,9 @@ const Form = () => {
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        // const user = userCredential.user;
         toast.success("You're have been signed in successfull")
-        navigate('/dashboard')
+        navigate('/dashboard', { replace: true })
       })
       .catch((error) => {
         toast.error('failed to sign you in');
@@ -85,11 +88,11 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.name == '' && inputValue.email == '' && inputValue.password == '') {
+    if (inputValue.name === '' && inputValue.email === '' && inputValue.password === '') {
       toast.error('make sure all inputs are filled')
-    } else if (inputValue.name == '') {
+    } else if (inputValue.name === '') {
       toast.error('Name can not be empty')
-    } else if (inputValue.email == '') {
+    } else if (inputValue.email === '') {
       toast.error('Email can not be empty')
     } else if (!inputValue.password.match(/[a-z]+/) || !inputValue.password.match(/[A-Z]+/) || !inputValue.password.match(/[0-9]+/) || !inputValue.password.match(/[$@#&!]+/)) {
       toast.error('Password must contain symbols, numbers and letters(uppercase and lowercase)')
@@ -102,9 +105,9 @@ const Form = () => {
 
   let handleSignin = (event) => {
     event.preventDefault()
-    if (inputValue.email == '' && inputValue.password == '') {
+    if (inputValue.email === '' && inputValue.password === '') {
       toast.error('make sure all inputs are filled')
-    } else if (inputValue.email == '') {
+    } else if (inputValue.email === '') {
       toast.error('Email can not be empty')
     } else if (!inputValue.password.match(/[a-z]+/) || !inputValue.password.match(/[A-Z]+/) || !inputValue.password.match(/[0-9]+/) || !inputValue.password.match(/[$@#&!]+/)) {
       toast.error('Password must contain symbols, numbers and letters(uppercase and lowercase)')
@@ -114,7 +117,7 @@ const Form = () => {
   }
 
   return (
-    <form className='w-full flex flex-col items-center justify-center md:px-[15px] md:py-[20px]' onSubmit={status == 'up' ? handleSubmit : handleSignin}>
+    <form className='w-full flex flex-col items-center justify-center md:px-[15px] md:py-[20px]' onSubmit={status === 'up' ? handleSubmit : handleSignin}>
       {
         status === 'up' && <Input
           type='text'

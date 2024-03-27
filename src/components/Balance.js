@@ -38,7 +38,7 @@ const Balance = (props) => {
   }, [])
 
   return (
-    <div className='w-full rounded-lg bg-neon-blue mb-5 flex-col md:flex items-center justify-center md:justify-between px-5 max-h-[300px] gap-5  overflow-auto h-fit md:gap-10'>
+    <div className='w-full rounded-lg bg-neon-blue mb-5 flex-col md:flex-row flex items-center justify-center md:justify-between px-5 max-h-[300px] gap-5  overflow-auto h-fit md:gap-10'>
       <Balancecard
         balance='1,500'
         cardDescription='Your Balance From Your Last Deposit'

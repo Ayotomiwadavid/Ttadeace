@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Form from '../components/Form'
 import Header from '../components/Header'
 import { Link, useParams } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
@@ -39,7 +39,7 @@ const SignIn = () => {
             </div>
           }
           {
-            status != 'up' && <Link to='/resetPassword' className='w-full text-center text-lg capitalize font-sans text-blue-text-color underline'>forgotten password?</Link>
+            !status === 'up' && <Link to='/resetPassword' className='w-full text-center text-lg capitalize font-sans text-blue-text-color underline'>forgotten password?</Link>
           }
           <aside className='flex w-full absolute bottom-0 md:hidden'>
             <Link to='/sign/up' className='flex items-center justify-center gap-y-3 w-1/2 bg-blue-text-color'>
@@ -57,7 +57,7 @@ const SignIn = () => {
           </aside>
         </div>
         <div className='hidden h-1/2 w-full md:h-full md:w-1/2 md:block'>
-          <img className='w-full h-full' src='https://www.wpbeginner.com/wp-content/uploads/2018/09/bestaccountingsoftware.png' alt='hero section image' />
+          <img className='w-full h-full' src='https://www.wpbeginner.com/wp-content/uploads/2018/09/bestaccountingsoftware.png' alt='hero section img' />
         </div>
       </main>
     </div>
