@@ -70,4 +70,4 @@ const Appbar = () => {
   );
 };
 
-export default {Appbar};
+export default Appbar;
