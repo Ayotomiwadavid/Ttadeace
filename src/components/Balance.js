@@ -27,8 +27,6 @@ const Balance = (props) => {
           const btcEarned = 1500;
           const usdEarned = btcToUSD(btcEarned, exchangeRate);
           console.log(usdEarned); // Output will be the equivalent USD amount
-
-
         })
         .catch(err => {
           console.log(err)
