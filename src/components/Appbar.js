@@ -31,7 +31,7 @@ const Appbar = () => {
   }, []);
 
   return (
-    <div className="border-b-[1px] border-solid border-border-color w-full md:p-2 flex items-center justify-between absolute top-0 right-0">
+    <div className="border-b-[1px] bg-overallBg border-solid border-border-color w-full md:p-2 flex items-center justify-between absolute top-0 right-0">
       <div className="flex w-full md:w-1/2 items-center justify-start px-3">
         <div className="flex items-center md:p-2 justify-start w-full">
           <img
