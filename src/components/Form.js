@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { app, auth } from '../config/firebase.config';
 import { getDatabase, ref, set, push,  get } from 'firebase/database'
-import appbar from './Appbar'
 
 const Form = () => {
   const navigate = useNavigate()
@@ -34,9 +33,6 @@ const Form = () => {
       readUserData(acountUser);
     });
   }, []);
-
-
-  console.log(appbar)
 
   let [visibility, setVisibility] = useState(false)
   let { status } = useParams();

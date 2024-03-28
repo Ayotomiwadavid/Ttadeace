@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Appbar from '../components/Appbar'
 import Mobilenavbar from '../components/Mobilenavbar'
+import Despositmain from '../components/Despositmain'
 
 const Deposit = () => {
   return (
@@ -9,6 +10,7 @@ const Deposit = () => {
       <Sidebar />
       <aside className='w-[100%] relative h-[100%] flex items-center justify-center'>
         <Appbar />
+        <Despositmain />
       </aside>
       <Mobilenavbar />
     </main>

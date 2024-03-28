@@ -1,9 +1,12 @@
 import React from 'react'
+import Depositsidebar from './Depositsidebar'
 
 const Despositmain = () => {
-  return (
-    <div></div>
-  )
+    return (
+        <main>
+            <Depositsidebar />
+        </main>
+    )
 }
 
 export default Despositmain
