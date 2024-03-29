@@ -3,7 +3,7 @@ import Depositsidebar from './Depositsidebar'
 
 const Despositmain = () => {
     return (
-        <main>
+        <main className='w-full flex px-10 h-[100%] bg-red-800 items-center justify-center'>
             <Depositsidebar />
         </main>
     )
