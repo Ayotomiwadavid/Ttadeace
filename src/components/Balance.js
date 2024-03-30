@@ -24,7 +24,7 @@ const Balance = (props) => {
           }
 
           const exchangeRate = btcRate; // 1 USD to BTC exchange rate
-          const btcEarned = 1500;
+          const btcEarned = 1000;
           const usdEarned = btcToUSD(btcEarned, exchangeRate);
           console.log(usdEarned); // Output will be the equivalent USD amount
         })
@@ -38,7 +38,7 @@ const Balance = (props) => {
   return (
     <div className='w-full rounded-lg bg-neon-blue mb-5 flex-col md:flex-row flex items-center justify-center md:justify-between px-5 max-h-[300px] gap-5  overflow-auto h-fit md:gap-10'>
       <Balancecard
-        balance='1,500'
+        balance='1,000'
         cardDescription='Your Balance From Your Last Deposit'
         currencySymbol='usd'
       />
