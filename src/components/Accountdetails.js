@@ -40,9 +40,9 @@ const Accountdetails = () => {
   }
 
   return (
-    <div className='w-full md:w-[75%] h-[70%] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[20px] gap-3 overflow-auto'>
-      <main className='flex w-full h-[90%] items-center md:items-start justify-center md:justify-between flex-col md:flex-row'>
-        <div className='md:w-[35%] w-full h-full flex flex-col items-center md:items-start justify-center gap-8'>
+    <div className='w-full md:w-[75%] overflow-auto h-[70%] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[20px] gap-3'>
+      <main className='flex w-full h-fit items-center md:items-start justify-center md:justify-between flex-col md:flex-row'>
+        <div className='md:w-[35%] w-full mt-[350px] md:h-full flex flex-col items-center md:items-start justify-center md:gap-8 gap-4'>
           <img src={QrCode} alt='qrcode img' className='w-[90%] h-[60%]' />
           <p className='w-ful text-center md:text-left text-md text-logo-color leading-6'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -61,14 +61,14 @@ const Accountdetails = () => {
             /> Send BTC to this adress only</h1>
             <p className='text-lg font-sans text-logo-color leading-7 items-center justify-start w-full'>
               <span className='font-bold'>Trade Ace accept deposit starting from {btcExchangeRate} BTC</span>, 
-              which is roughly equal to 1,000USD. And make sure to be carefull with the trasfer, otherwise you may lose your capital to unknown adress.
+              which is equivalent to 1,000USD. And make sure to be carefull with the trasfer, otherwise you may lose your capital to unknown adress.
             </p> 
           </div>
         </div>
       </main>
       <aside className='flex w-full items-center justify-center'>
-        <div className='px-5 py-2 w-[80%] flex items-center justify-between gap-3 bg-white' onClick={copyToClipboard}>
-          <p>{btcAdress}</p>
+        <div className='md:px-5 px-3 py-2 w-full md:w-[80%] flex items-center justify-center md:justify-between gap-3 bg-white' onClick={copyToClipboard}>
+          <p className='w-[90%] md:w-0 overflow-x-auto'>{btcAdress}</p>
           <ContentCopyOutlinedIcon 
             style={{
               cursor: 'pointer'
