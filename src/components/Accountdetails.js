@@ -22,8 +22,8 @@ const Accountdetails = () => {
       await fetch(url, options)
         .then(res => res.json())
         .then(data => {
-          const btcRate = data.rates.BTC
-          setbtcExchangeRate(btcRate);
+          const btcRate = data.rates.BTC * 1000
+          setbtcExchangeRate(btcRate.toString().substring(0, 5));
         })
         .catch(err => {
           console.log(err)
@@ -38,19 +38,20 @@ const Accountdetails = () => {
       navigator.clipboard.writeText(btcAdress);
       toast.success('successfully copied to clipboard')
   }
+
   return (
-    <div className='w-full md:w-[75%] h-[70%] mt-[580px] md:mt-[100px] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[10px] md:p-[20px] gap-3 overflow-auto'>
-      <main className='flex w-full h-[90%] items-start justify-center md:justify-between flex-col md:flex-row'>
-        <div className='md:w-[35%] w-full h-full flex flex-col items-start justify-center gap-8'>
+    <div className='w-full md:w-[75%] h-[70%] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[20px] gap-3 overflow-auto'>
+      <main className='flex w-full h-[90%] items-center md:items-start justify-center md:justify-between flex-col md:flex-row'>
+        <div className='md:w-[35%] w-full h-full flex flex-col items-center md:items-start justify-center gap-8'>
           <img src={QrCode} alt='qrcode img' className='w-[90%] h-[60%]' />
-          <p className='w-ful text-left text-md text-logo-color leading-6'>
+          <p className='w-ful text-center md:text-left text-md text-logo-color leading-6'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className='w-[60%] h-full flex flex-col items-center justify-center'>
+        <div className='md:w-[60%] w-full h-full flex flex-col items-center justify-center'>
           <div className='flex flex-col items-start justify-center gap-3 w-full h-full'>
             <label className='font-sans font-bold text-xl text-logo-color capitalize'>Currency</label>
-            <div className='w-[80%] h-[45px] border-2 border-logo-color rounded-md px-5 flex items-center bg-white justify-start gap-3'>
+            <div className='md:w-[80%] w-full h-[45px] border-2 border-logo-color rounded-md px-5 flex items-center bg-white justify-start gap-3'>
               <img src={Btclogo} alt='btc logo' className='w-[30px] h-[30px]' />
               <h4 className='font-bold text-xl font-sans text-logo-color'>BITCOIN</h4>
             </div>
@@ -59,7 +60,7 @@ const Accountdetails = () => {
             <h1 className='font-bold font-sans text-neon-blue text-lg py-5 gap-3 w-full capitalize flex items-center justify-start'> <InfoIcon 
             /> Send BTC to this adress only</h1>
             <p className='text-lg font-sans text-logo-color leading-7 items-center justify-start w-full'>
-              <span className='font-bold'>Trade Ace accept deposit starting from {btcExchangeRate * 1000}BTC</span>, 
+              <span className='font-bold'>Trade Ace accept deposit starting from {btcExchangeRate} BTC</span>, 
               which is roughly equal to 1,000USD. And make sure to be carefull with the trasfer, otherwise you may lose your capital to unknown adress.
             </p> 
           </div>
