@@ -40,9 +40,9 @@ const Accountdetails = () => {
   }
 
   return (
-    <div className='w-full md:w-[75%] overflow-auto h-[70%] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[20px] gap-3'>
+    <div className='w-full md:w-[75%] overflow-auto h-[70%] rounded-md bg-overallBg flex flex-col items-center justify-center md:justify-start p-[20px] gap-3 md:overflow-hidden'>
       <main className='flex w-full h-fit items-center md:items-start justify-center md:justify-between flex-col md:flex-row'>
-        <div className='md:w-[35%] w-full mt-[350px] md:h-full flex flex-col items-center md:items-start justify-center md:gap-8 gap-4'>
+        <div className='md:w-[35%] w-full md:mt-0 mt-[350px] md:h-full flex flex-col items-center md:items-start justify-center md:gap-8 gap-4'>
           <img src={QrCode} alt='qrcode img' className='w-[90%] h-[60%]' />
           <p className='w-ful text-center md:text-left text-md text-logo-color leading-6'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -68,7 +68,7 @@ const Accountdetails = () => {
       </main>
       <aside className='flex w-full items-center justify-center'>
         <div className='md:px-5 px-3 py-2 w-full md:w-[80%] flex items-center justify-center md:justify-between gap-3 bg-white' onClick={copyToClipboard}>
-          <p className='w-[90%] md:w-0 overflow-x-auto'>{btcAdress}</p>
+          <p className='w-[90%] overflow-x-auto md:w-full'>{btcAdress}</p>
           <ContentCopyOutlinedIcon 
             style={{
               cursor: 'pointer'

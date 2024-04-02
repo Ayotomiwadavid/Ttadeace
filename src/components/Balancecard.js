@@ -36,7 +36,7 @@ const Balancecard = (props) => {
         <div className='w-full items-center justify-between flex px-5'>
           <h1 className='text-white text-lg capitalize font-bold p-5 md:w-[50%] px-0'>{cardDescription}</h1>
           <div className='rounded-full border-2 border-white w-[40px] h-[40px] flex items-center justify-center mb-5'>
-          <Link to={'/' + user + '/deposit'}>
+          <Link to={'/deposit/'+user}>
           <Add
               style={{
                 fontSize: '35px',

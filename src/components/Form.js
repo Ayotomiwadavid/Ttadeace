@@ -70,7 +70,14 @@ const Form = () => {
       userName: name,
       userEmail: email,
       userPassword: password,
-      transactionHistory: []
+      transactionHistory: [
+          {
+              transactionId: '',
+              dateTimeStamp: '',
+              amountDeposited: '',
+              state: ''
+          }
+      ]
     }).then(() => {
       console.log('data saved sucessfully');
     }).catch((err) => {

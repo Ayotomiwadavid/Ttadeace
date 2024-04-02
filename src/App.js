@@ -4,17 +4,19 @@ import Pagenotfound from './Pages/Pagenotfound';
 import SignUp from './Pages/SignUp';
 import Dashboard from './Pages/Dashboard';
 import Deposit from './Pages/Deposit';
+import Confirmdeposit from './Pages/Confirmdeposit';
 
 
 function App() {
   return (
-    <main className='bg-white'>
+    <main>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/sign/:status' element={<SignUp />} />
       <Route path='/:user/dashboard' element={<Dashboard />}/>
-      <Route path='/:user/deposit' element={<Deposit />}/>
-      <Route path='*' element={<Pagenotfound />} />
+      <Route path='/deposit/:user' element={<Deposit />}/>
+      <Route path='/deposit/confirm' element={<Confirmdeposit />}/>
+      <Route path='*' element={<Pagenotfound />}/>
     </Routes>
     </main>
   );
