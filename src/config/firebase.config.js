@@ -1,6 +1,5 @@
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { initializeRecaptchaConfig } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC5zti3r-YRdvYexvSGK5zaXlyV9zou_ns",
