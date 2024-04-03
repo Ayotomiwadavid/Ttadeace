@@ -76,6 +76,7 @@ const Form = () => {
         let realName = firstuserName.userName;
         var atRealNameSpaceIndex = realName.indexOf(' ');
         var userName = realName.substring(0, atRealNameSpaceIndex);
+        console.log(firstuserName)
       }
       return navigate(`/${userName}/dashboard`, { replace: true })
     };
