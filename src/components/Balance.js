@@ -22,14 +22,7 @@ const Balance = (props) => {
           const btcEarned = 1000;
           setBalance(btcEarned)
           setbtcExchangeRate(btcRate * btcEarned);
-          // function btcToUSD(btcAmount, exchangeRate) {
-          //   return btcAmount * exchangeRate;
-          // }
-
-          // const exchangeRate = btcRate; // 1 USD to BTC exchange rate
           console.log(btcRate * 1000)
-          // const usdEarned = btcToUSD(btcEarned, exchangeRate);
-          // console.log(usdEarned); // Output will be the equivalent USD amount
         })
         .catch(err => {
           console.log(err)

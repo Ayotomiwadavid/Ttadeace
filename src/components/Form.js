@@ -18,6 +18,14 @@ const Form = () => {
   //   var newUserEmail = email.substring(0, atIndex);
   //   const database = getDatabase(app);
   //   const databaseRef = ref(database, `users/${newUserEmail}`);
+  //   const snapshot = await get(databaseRef);
+  //   if (snapshot.exists()) {
+  //     let firstuserName = Object.values(snapshot.val());
+  //     let realName = firstuserName[0].userName;
+  //     var atRealNameSpaceIndex = realName.indexOf(' ');
+  //     var userName = realName.substring(0, atRealNameSpaceIndex);
+  //     setUser(userName)
+  //   }
   // };
   // useEffect(() => {
   //   auth.onAuthStateChanged((userCred) => {
@@ -78,12 +86,28 @@ const Form = () => {
   }
 
 
+  let readUserData = async (user) => {
+    console.log(user)
+      var atIndex = user.indexOf("@");
+      var newUserEmail = user.substring(0, atIndex);
+      const database = getDatabase(app);
+      const databaseRef = ref(database, `users/${newUserEmail}`);
+      const snapshot = await get(databaseRef);
+      if (snapshot.exists()) {
+        let firstuserName = Object.values(snapshot.val());
+        let realName = firstuserName[0].userName;
+        var atRealNameSpaceIndex = realName.indexOf(' ');
+        var userName = realName.substring(0, atRealNameSpaceIndex);
+        navigate(`/${userName}/dashboard`, { replace: true })
+      }
+    };
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+         const user = userCredential.user.email;
+         console.log(user)
+         readUserData(user)
         toast.success("You're have been signed in successfull")
-        navigate(`/${user}/dashboard`, { replace: true })
       })
       .catch((error) => {
         toast.error('failed to sign you in');
