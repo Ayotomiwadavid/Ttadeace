@@ -12,27 +12,19 @@ import { getDatabase, ref, set, push,  get } from 'firebase/database'
 
 const Form = () => {
   const navigate = useNavigate()
-  let [user, setUser] = useState("");
-  let readUserData = async (email) => {
-    var atIndex = email.indexOf("@");
-    var newUserEmail = email.substring(0, atIndex);
-    const database = getDatabase(app);
-    const databaseRef = ref(database, `users/${newUserEmail}`);
-    const snapshot = await get(databaseRef);
-    if (snapshot.exists()) {
-      let firstuserName = Object.values(snapshot.val());
-      let realName = firstuserName[0].userName;
-      var atRealNameSpaceIndex = realName.indexOf(' ');
-      var userName = realName.substring(0, atRealNameSpaceIndex);
-      setUser(userName)
-    }
-  };
-  useEffect(() => {
-    auth.onAuthStateChanged((userCred) => {
-      let acountUser = userCred.email;
-      readUserData(acountUser);
-    });
-  }, []);
+  // let [user, setUser] = useState("");
+  // let readUserData = async (email) => {
+  //   var atIndex = email.indexOf("@");
+  //   var newUserEmail = email.substring(0, atIndex);
+  //   const database = getDatabase(app);
+  //   const databaseRef = ref(database, `users/${newUserEmail}`);
+  // };
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((userCred) => {
+  //     let acountUser = userCred.email;
+  //     readUserData(acountUser);
+  //   });
+  // }, []);
 
   let [visibility, setVisibility] = useState(false)
   let { status } = useParams();
@@ -89,7 +81,7 @@ const Form = () => {
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // const user = userCredential.user;
+        const user = userCredential.user;
         toast.success("You're have been signed in successfull")
         navigate(`/${user}/dashboard`, { replace: true })
       })

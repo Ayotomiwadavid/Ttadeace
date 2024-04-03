@@ -16,7 +16,7 @@ const Header = (props) => {
   return (
     <header className='flex w-full h-[12vh] items-center py-1  justify-between absolute top-0 left-0 right-0 md:px-20'>
       <Logo />
-      {showNavItems ? <div id={showMenu && 'showMenuId'} className='transition-all duration-700 fixed bg-blue-text-color top-[-165px] p-5 w-full flex flex-col md:items-center md:justify-end md:top-[0px] md:p-1 md:w-1/2 md:h-full gap-3 md:flex-row md:flex md:bg-transparent md:relative'>
+      {showNavItems ? <div id={showMenu ? 'showMenuId' : 'id'} className='transition-all duration-700 fixed bg-blue-text-color top-[-165px] p-5 w-full flex flex-col md:items-center md:justify-end md:top-[0px] md:p-1 md:w-1/2 md:h-full gap-3 md:flex-row md:flex md:bg-transparent md:relative'>
         <Link to='/sign/in'>
           <button className='transition duration-700 outline-none text-sx capitalize text-white px-5 py-2 text-center hover:border-white hover:border-[1px] rounded-sm'>sign in</button>
         </Link>

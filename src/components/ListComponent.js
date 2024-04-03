@@ -1,10 +1,8 @@
 import React from 'react'
-import SettingsIcon from '@mui/icons-material/Settings';
-import CachedIcon from '@mui/icons-material/Cached';
-import WifiIcon from '@mui/icons-material/Wifi';
 
 const ListComponent = (props) => {
     let { iconName, listTitlle, listDescrion, tag, tagContent } = props
+    let TagNamie = tag
     const CustomIconTag = iconName
     return (
         <div className='flex w-full items-center justify-start py-5 md:px-5 md:py-3'>
@@ -15,9 +13,9 @@ const ListComponent = (props) => {
                             color: "#fff",
                             fontSize: '20px'
                         }} />
-                </div> || tag &&
+                </div> || TagNamie &&
                 <div className='w-[50px] h-[50px] rounded-full flex items-center justify-center mr-1 md:mr-3'>
-                  <tag className="font-bold text-4xl text-blue-text-color text-center">{tagContent}</tag>
+                  <TagNamie className="font-bold text-4xl text-blue-text-color text-center">{tagContent}</TagNamie>
                 </div>
             }
             <div className='flex flex-col pl-3 md:pl-6 items-start justify-center'>
