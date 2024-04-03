@@ -73,10 +73,9 @@ const Form = () => {
       const snapshot = await get(databaseRef);
       if (snapshot.exists()) {
         let firstuserName = Object.values(snapshot.val());
-        let realName = firstuserName[0].userName;
+        let realName = firstuserName.userName;
         var atRealNameSpaceIndex = realName.indexOf(' ');
         var userName = realName.substring(0, atRealNameSpaceIndex);
-        
       }
       return navigate(`/${userName}/dashboard`, { replace: true })
     };
