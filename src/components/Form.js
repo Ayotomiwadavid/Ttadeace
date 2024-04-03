@@ -76,7 +76,7 @@ const Form = () => {
         // var realName = firstuserName[0].userName;
         // var atRealNameSpaceIndex = realName.indexOf(' ');
         // var userName = realName.substring(0, atRealNameSpaceIndex);
-        console.log(firstuserName)
+        console.log(firstuserName[0])
       }
       // }else{
       //   console.log('an error occured')
