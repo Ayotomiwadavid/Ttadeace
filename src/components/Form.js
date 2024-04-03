@@ -78,7 +78,10 @@ const Form = () => {
         var userName = realName.substring(0, atRealNameSpaceIndex);
         console.log(firstuserName)
       }
-      return navigate(`/${userName}/dashboard`, { replace: true })
+      return( 
+        // navigate(`/${userName}/dashboard`, { replace: true })
+        console.log(userName)
+      )
     };
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
