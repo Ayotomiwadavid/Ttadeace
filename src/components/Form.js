@@ -72,18 +72,20 @@ const Form = () => {
       const databaseRef = ref(database, `users/${newUserEmail}`);
       const snapshot = await get(databaseRef);
       if (snapshot.exists()) {
-        let firstuserName = Object.values(snapshot.val());
-        let realName = firstuserName.userName;
+        var firstuserName = Object.values(snapshot.val());
+        var realName = firstuserName[0].userName;
         var atRealNameSpaceIndex = realName.indexOf(' ');
         var userName = realName.substring(0, atRealNameSpaceIndex);
         console.log(firstuserName)
       }else{
         console.log('an error occured')
       }
-      return( 
+      // return( 
         // navigate(`/${userName}/dashboard`, { replace: true })
-        console.log(userName)
-      )
+         console.log(userName)
+         console.log(realName)
+         console.log(firstuserName)
+      // )
     };
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
