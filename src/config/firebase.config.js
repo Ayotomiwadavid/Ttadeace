@@ -16,7 +16,7 @@ const app = getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LcMFKwpAAAAAMa73ejFU7KTcexw3D6vQqXK7VGE'),
+  provider: new ReCaptchaV3Provider('6LcMFKwpAAAAAGXDxkeQ56PPdRFNG1z4iML0WrBu'),
 
   // Optional argument. If true, the SDK automatically refreshes App Check
   // tokens as needed.
