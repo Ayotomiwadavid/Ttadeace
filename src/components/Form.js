@@ -73,17 +73,18 @@ const Form = () => {
       const snapshot = await get(databaseRef);
       if (snapshot.exists()) {
         var firstuserName = Object.values(snapshot.val());
-        var realName = firstuserName[0].userName;
-        var atRealNameSpaceIndex = realName.indexOf(' ');
-        var userName = realName.substring(0, atRealNameSpaceIndex);
+        // var realName = firstuserName[0].userName;
+        // var atRealNameSpaceIndex = realName.indexOf(' ');
+        // var userName = realName.substring(0, atRealNameSpaceIndex);
         console.log(firstuserName)
-      }else{
-        console.log('an error occured')
       }
+      // }else{
+      //   console.log('an error occured')
+      // }
       // return( 
         // navigate(`/${userName}/dashboard`, { replace: true })
-         console.log(userName)
-         console.log(realName)
+        //  console.log(userName)
+        //  console.log(realName)
          console.log(firstuserName)
       // )
     };
