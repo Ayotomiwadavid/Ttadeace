@@ -88,8 +88,7 @@ const Form = () => {
 
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // const user = userCredential.user;
+      .then(() => {
         toast.success("You're have been signed in successfull")
         navigate(`/${user}/dashboard`, { replace: true })
       })
