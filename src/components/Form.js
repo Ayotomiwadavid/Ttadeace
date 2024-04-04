@@ -93,7 +93,7 @@ const Form = () => {
         navigate(`/${user}/dashboard`, { replace: true })
       })
       .catch((error) => {
-        toast.error('failed to sign you in');
+        toast.error(error);
       });
   }
 
