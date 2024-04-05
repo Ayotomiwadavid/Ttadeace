@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { app, auth } from '../config/firebase.config';
-import { getDatabase, ref, set, push,  get } from 'firebase/database'
+import { getDatabase, ref, set, push, get } from 'firebase/database'
 
 const Form = () => {
   const navigate = useNavigate()
@@ -46,7 +46,7 @@ const Form = () => {
     email: '',
     password: ''
   });
-  
+
   let handleChange = (event) => {
     const { name, value } = event.target
     setInputValue((prevValue) => {
@@ -71,12 +71,12 @@ const Form = () => {
       userEmail: email,
       userPassword: password,
       transactionHistory: [
-          {
-              transactionId: '',
-              dateTimeStamp: '',
-              amountDeposited: '',
-              state: ''
-          }
+        {
+          transactionId: '',
+          dateTimeStamp: '',
+          amountDeposited: '',
+          state: ''
+        }
       ]
     }).then(() => {
       console.log('data saved sucessfully');
@@ -139,6 +139,7 @@ const Form = () => {
       signIn()
     }
   }
+
 
   return (
     <form className='w-full flex flex-col items-center justify-center md:px-[15px] md:py-[20px]' onSubmit={status === 'up' ? handleSubmit : handleSignin}>
