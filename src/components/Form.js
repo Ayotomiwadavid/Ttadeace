@@ -89,7 +89,7 @@ const Form = () => {
   let signIn = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        // toast.success("You have been signed in successfull")
+        // toast.success("You have been signed in successfully");
         navigate(`/${user}/dashboard`, { replace: true })
       })
       .catch((error) => {
