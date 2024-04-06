@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth'
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
-    apiKey: "6LcMFKwpAAAAAGXDxkeQ56PPdRFNG1z4iML0WrBu",
+    apiKey: "AIzaSyC5zti3r-YRdvYexvSGK5zaXlyV9zou_ns",
     authDomain: "tradeace-backend-95e84.firebaseapp.com",
     databaseURL: "https://tradeace-backend-95e84-default-rtdb.firebaseio.com",
     projectId: "tradeace-backend-95e84",
