@@ -1,34 +1,20 @@
 import React, { useEffect, useState } from "react";
 import logo from "../images/acetradeLogo.png";
-import { app, auth } from "../config/firebase.config";
-import { getDatabase, ref, get } from "firebase/database";
+import { auth } from "../config/firebase.config";
 import { CalendarMonth } from "@mui/icons-material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { readUserData } from "../config/controller";
 
 const Appbar = () => {
   let [user, setUser] = useState("");
 
-  let readUserData = async (email) => {
-    var atIndex = email.indexOf("@");
-    var newUserEmail = email.substring(0, atIndex);
-    const database = getDatabase(app);
-    const databaseRef = ref(database, `users/${newUserEmail}`);
-    const snapshot = await get(databaseRef);
-    if (snapshot.exists()) {
-      let firstuserName = Object.values(snapshot.val());
-      let realName = firstuserName[0].userName;
-      var atRealNameSpaceIndex = realName.indexOf(' ');
-      var userName = realName.substring(0, atRealNameSpaceIndex);
-      setUser(userName)
-    }
-  };
-
-  useEffect(() => {
-    auth.onAuthStateChanged((userCred) => {
-      let acountUser = userCred.email;
-      readUserData(acountUser);
-    });
-  }, []);
+  //setting use effect for fetching user details
+useEffect(() => {
+  auth.onAuthStateChanged((userCred) => {
+    let acountUser = userCred.email;
+    readUserData(acountUser, setUser);
+  });
+}, []);
 
   return (
     <div className="border-b-[1px] bg-overallBg border-solid border-border-color w-full md:p-2 flex items-center justify-between absolute top-0 right-0">
@@ -39,7 +25,7 @@ const Appbar = () => {
             alt="logo"
             className="w-[70px] h-[70px] rounded-full"
           />
-          <span className="font-bold text-sm font-sans text-logo-color md:text-2xl w-full">
+          <span id="jejdj" className="font-bold text-sm font-sans text-logo-color md:text-2xl w-full">
             welcome, {user}
           </span>
         </div>

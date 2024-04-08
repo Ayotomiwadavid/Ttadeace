@@ -1,55 +1,41 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Input from './InputComponent';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import HttpsIcon from '@mui/icons-material/Https';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-import { app, auth } from '../config/firebase.config';
-import { getDatabase, ref, set, push, get } from 'firebase/database'
+import { signIn, signUp } from '../config/controller';
+import { useNavigate } from 'react-router-dom';
+
 
 const Form = () => {
-  const navigate = useNavigate()
-  let [user, setUser] = useState("");
-  let readUserData = async (email) => {
-    var atIndex = email.indexOf("@");
-    var newUserEmail = email.substring(0, atIndex);
-    const database = getDatabase(app);
-    const databaseRef = ref(database, `users/${newUserEmail}`);
-    const snapshot = await get(databaseRef);
-    if (snapshot.exists()) {
-      let firstuserName = Object.values(snapshot.val());
-      let realName = firstuserName[0].userName;
-      var atRealNameSpaceIndex = realName.indexOf(' ');
-      var userName = realName.substring(0, atRealNameSpaceIndex);
-      setUser(userName)
-    }
-  };
-  useEffect(() => {
-    auth.onAuthStateChanged((userCred) => {
-      let acountUser = userCred.email;
-      readUserData(acountUser);
-    });
-  }, []);
 
-  let [visibility, setVisibility] = useState(false)
+  //defining use navigate to channge location after sign in
+  const navigate = useNavigate()
+
+  //Getting the parameter of the current form to know if it's login or sign up
   let { status } = useParams();
+
+//Seting the visibillity of name inut field to change form status
+  let [visibility, setVisibility] = useState(false)
+
   let handleVisibility = () => {
     setVisibility(!visibility)
   }
 
-  const [inputValue, setInputValue] = useState({
+  const [userData, setUserData] = useState({
     userId: '',
     name: '',
     email: '',
     password: ''
   });
 
+  //HANDLING FORM CHANGES
   let handleChange = (event) => {
     const { name, value } = event.target
-    setInputValue((prevValue) => {
+    setUserData((prevValue) => {
       return {
         ...prevValue,
         [name]: value
@@ -58,85 +44,33 @@ const Form = () => {
     )
   }
 
-  const { email, password, name } = inputValue;
-
-  const saveUser = async () => {
-    let mail = email
-    var atIndex = mail.indexOf('@');
-    var newUserEmail = email.substring(0, atIndex);
-    const db = getDatabase(app);
-    const newDocRef = push(ref(db, `users/${newUserEmail}`));
-    set(newDocRef, {
-      userName: name,
-      userEmail: email,
-      userPassword: password,
-      transactionHistory: [
-        {
-          transactionId: '',
-          dateTimeStamp: '',
-          amountDeposited: '',
-          state: ''
-        }
-      ]
-    }).then(() => {
-      console.log('data saved sucessfully');
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
-
-
-  let signIn = async () => {
-    await signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        // toast.success("You have been signed in successfully");
-        navigate(`/${user}/dashboard`, { replace: true })
-      })
-      .catch((error) => {
-        toast.error(error);
-      });
-  }
-
-  let signUp = async () => {
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        await sendEmailVerification(user)
-        toast.success('Check your email for confirmation link')
-        saveUser()
-      })
-      .catch((err) => {
-        toast.error('failed to create your account')
-      })
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.name === '' && inputValue.email === '' && inputValue.password === '') {
+    if (userData.name === '' && userData.email === '' && userData.password === '') {
       toast.error('make sure all inputs are filled')
-    } else if (inputValue.name === '') {
+    } else if (userData.name === '') {
       toast.error('Name can not be empty')
-    } else if (inputValue.email === '') {
+    } else if (userData.email === '') {
       toast.error('Email can not be empty')
-    } else if (!inputValue.password.match(/[a-z]+/) || !inputValue.password.match(/[A-Z]+/) || !inputValue.password.match(/[0-9]+/) || !inputValue.password.match(/[$@#&!]+/)) {
+    } else if (!userData.password.match(/[a-z]+/) || !userData.password.match(/[A-Z]+/) || !userData.password.match(/[0-9]+/) || !userData.password.match(/[$@#&!]+/)) {
       toast.error('Password must contain symbols, numbers and letters(uppercase and lowercase)')
-    } else if (inputValue.password.length < 6) {
+    } else if (userData.password.length < 6) {
       toast.error('Password must be greater than six')
     } else {
-      signUp();
+      signUp(userData);
     }
   }
 
   let handleSignin = (event) => {
     event.preventDefault()
-    if (inputValue.email === '' && inputValue.password === '') {
+    if (userData.email === '' && userData.password === '') {
       toast.error('make sure all inputs are filled')
-    } else if (inputValue.email === '') {
+    } else if (userData.email === '') {
       toast.error('Email can not be empty')
-    } else if (!inputValue.password.match(/[a-z]+/) || !inputValue.password.match(/[A-Z]+/) || !inputValue.password.match(/[0-9]+/) || !inputValue.password.match(/[$@#&!]+/)) {
+    } else if (!userData.password.match(/[a-z]+/) || !userData.password.match(/[A-Z]+/) || !userData.password.match(/[0-9]+/) || !userData.password.match(/[$@#&!]+/)) {
       toast.error('Password must contain symbols, numbers and letters(uppercase and lowercase)')
     } else {
-      signIn()
+      signIn(userData, navigate)
     }
   }
 
@@ -149,7 +83,7 @@ const Form = () => {
           inputplaceholder='full name'
           name='name'
           IconName={PersonOutlineIcon}
-          inputValue={inputValue.name}
+          inputValue={userData.name}
           onChnage={handleChange}
         />
       }
@@ -158,7 +92,7 @@ const Form = () => {
         inputplaceholder='enter your email'
         name='email'
         IconName={MailOutlineIcon}
-        inputValue={inputValue.email}
+        inputValue={userData.email}
         onChnage={handleChange}
       />
       <Input
@@ -168,7 +102,7 @@ const Form = () => {
         IconName={HttpsIcon}
         visibilityStatus={visibility}
         clickFunction={handleVisibility}
-        inputValue={inputValue.password}
+        inputValue={userData.password}
         onChnage={handleChange}
       />
       <div className='w-full text-xl items-center justify-center md:justify-start p-[10px] md:px-[10vw] mt-[10px] flex '>
