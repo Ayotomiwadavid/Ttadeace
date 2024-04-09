@@ -17,14 +17,13 @@ export const saveUser = async (userData) => {
     var atIndex = mail.indexOf('@');
     var newUserEmail = email.substring(0, atIndex);
     try {
-        const docRef = await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, "users"), {
             userId: newUserEmail,
             userName: name,
             userEmail: email,
             userPassword: password,
             userHistory: JSON.stringify(transactionHistory),
         });
-        console.log("save successfully Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -60,11 +59,15 @@ export let signUp = async (userData) => {
 
 //READING USER DATA FOR UPDATES
 export let readUserData = async (email, setUser) => {
-    // var atIndex = email.indexOf("@");
-    // var newUserEmail = email.substring(0, atIndex);
+    var atIndex = email.indexOf("@");
+    var newUserEmail = email.substring(0, atIndex);
     const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-        setUser(doc.id)
-      console.log(`${doc.id} => ${doc.data()}`);
-    });
+    let targetedUser = querySnapshot.Find((user) => {
+        user.userId = newUserEmail;
+    })
+    setUser(targetedUser);
+    console.log(targetedUser);
+    // querySnapshot.forEach((doc) => {
+    //     let targetedUser = doc.find
+    // });
   };
