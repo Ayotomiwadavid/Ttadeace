@@ -1,37 +1,33 @@
 //Importing neccessary firebase dependencies
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-import { app, auth } from '../config/firebase.config';
-import { getDatabase, ref, set, push, get } from 'firebase/database'
+import { auth, db } from '../config/firebase.config';
 import { toast } from 'react-toastify';
+import { collection, addDoc, getDocs} from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
+
+
+let transactionHistory = []
 
 
 //SAVING USER AFTER SIGNUP
 export const saveUser = async (userData) => {
-
     const { email, password, name } = userData;
     let mail = email
+    console.log(email)
     var atIndex = mail.indexOf('@');
     var newUserEmail = email.substring(0, atIndex);
-    const db = getDatabase(app);
-    const newDocRef = push(ref(db, `users/${newUserEmail}`));
-    set(newDocRef, {
-        userName: name,
-        userEmail: email,
-        userPassword: password,
-        transactionHistory: [
-            {
-                transactionId: '',
-                dateTimeStamp: '',
-                amountDeposited: '',
-                state: ''
-            }
-        ]
-    }).then(() => {
-        console.log('data saved sucessfully');
-    }).catch((err) => {
-        console.log(err)
-    })
+    try {
+        const docRef = await addDoc(collection(db, "users"), {
+            userId: newUserEmail,
+            userName: name,
+            userEmail: email,
+            userPassword: password,
+            userHistory: JSON.stringify(transactionHistory),
+        });
+        console.log("save successfully Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
 }
 
 //Sign in or login fuction
@@ -62,19 +58,13 @@ export let signUp = async (userData) => {
         })
 }
 
+//READING USER DATA FOR UPDATES
 export let readUserData = async (email, setUser) => {
-    var atIndex = email.indexOf("@");
-    var newUserEmail = email.substring(0, atIndex);
-    const database = getDatabase(app);
-    const databaseRef = ref(database, `users/${newUserEmail}`);
-    const snapshot = await get(databaseRef);
-    if (snapshot.exists()) {
-      let firstuserName = Object.values(snapshot.val());
-      console.log(firstuserName)
-      let realName = firstuserName[0].userName;
-      console.log(realName)
-      var atRealNameSpaceIndex = realName.indexOf(' ');
-      var userName = realName.substring(0, atRealNameSpaceIndex);
-    }
-    setUser(userName)
+    // var atIndex = email.indexOf("@");
+    // var newUserEmail = email.substring(0, atIndex);
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+        setUser(doc.id)
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
   };

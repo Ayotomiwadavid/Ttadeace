@@ -1,17 +1,18 @@
-import { getApp, getApps, initializeApp } from 'firebase/app'
+import {initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC5zti3r-YRdvYexvSGK5zaXlyV9zou_ns",
-    authDomain: "tradeace-backend-95e84.firebaseapp.com",
-    databaseURL: "https://tradeace-backend-95e84-default-rtdb.firebaseio.com",
-    projectId: "tradeace-backend-95e84",
-    storageBucket: "tradeace-backend-95e84.appspot.com",
-    messagingSenderId: "722664596397",
-    appId: "1:722664596397:web:52d69cd1f292d035147724"
+    apiKey: "AIzaSyCg2Z0DkLT2lJu5B7qzTyZXVnEHB_j6l3w",
+    authDomain: "tradeace003.firebaseapp.com",
+    projectId: "tradeace003",
+    storageBucket: "tradeace003.appspot.com",
+    messagingSenderId: "543807611900",
+    appId: "1:543807611900:web:66003bde85ea525f950879"
 };
 
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-export {app, auth};
+const db = getFirestore(app);
+export {app, auth, db};
