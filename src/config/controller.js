@@ -2,7 +2,7 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth, db } from '../config/firebase.config';
 import { toast } from 'react-toastify';
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import { getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -67,14 +67,18 @@ export let readUserData = async (accountuser, setUser) => {
         let userInitial = userData.userName;
         setUser(userInitial)
         console.log(userData)
-      } else {
+    } else {
         console.log("User document does not exist.");
-      }
+    }
 };
 
 //SAVING TRANSACTION HISTORY
 export let setNewUserDoc = async (user, history) => {
-    let {transactionId, dateTimeStamp, amountDeposited, state} = history
+    
+    //GETTING ALL TRANSACTION DATAS
+    let { transactionId, dateTimeStamp, amountDeposited, state } = history
+
+    //PUSHING THE TRANSACTION DETAILS TO IT ARRAY
     transactionHistory.push(
         {
             userTransactionId: transactionId,
@@ -84,33 +88,18 @@ export let setNewUserDoc = async (user, history) => {
         }
     )
 
-    console.log(transactionHistory)
-
+    //CUTTING THE USER EMAIL TO GET DB ID
     var atIndex = user.indexOf('@');
     var newUserEmail = user.substring(0, atIndex);
     const docRef = doc(db, "users", newUserEmail);
-    const docSnapshot = await getDoc(docRef)
-    if (docSnapshot.exists) {
-        const userData = docSnapshot.data();
-        let userInitial = userData.userName;
-        let Password = userData.userPassword;
-        if (transactionHistory && transactionHistory.length > 0) {
-            try {
-                await setDoc(doc(db, "users", newUserEmail), {
-                    userId: newUserEmail,
-                    userName: userInitial,
-                    userEmail: user,
-                    userPassword: Password,
-                    userHistory: transactionHistory,
-                });
-            } catch (error) {
-                console.log('An error occured:' + error)
-            }
-        }else {
-            console.log("Transaction history is empty or undefined.");
-        }
-        console.log(userData)
-      } else {
-        console.log("User document does not exist.");
-      }
+    let stringifyHistory = JSON.stringify(transactionHistory)
+
+    //UPDATING USERHISTORY
+    try {
+        await updateDoc(docRef, {
+            userHistory: stringifyHistory
+        });
+    } catch (error) {
+        console.log('An error occured:' + error)
+    }
 }
