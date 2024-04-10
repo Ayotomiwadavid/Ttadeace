@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Appbar from '../components/Appbar'
-import like from '../images/like.png'
 import { auth } from '../config/firebase.config';
 import { setNewUserDoc } from '../config/controller';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 const Confirmdeposit = () => {
+    //DECLARING USENAVIGATE
+    const navigate = useNavigate()
+
     //STATE FOR AMOUNT CONTROLLED COMPONENT
     const [amountValue, setamountValue] = useState(''); 
     const [user, setuser] = useState('')
@@ -35,7 +41,15 @@ const Confirmdeposit = () => {
                 state: true
             }
         )
-        setNewUserDoc(user, history);
+        if (amountValue < 1000) {
+            toast.error('Sorry, Our payment starts from 1000usd');
+        }else{
+            toast.success('Thanks for confirming your payment');
+            setNewUserDoc(user, history); 
+            setInterval(() => {
+              navigate(`/dashboard`, { replace: true })
+            }, 3000);
+        }
     }
 
     useEffect(() => {
@@ -48,6 +62,7 @@ const Confirmdeposit = () => {
     return (
         <main className='flex flex-col items-center justify-center'>
             <Appbar />
+            <ToastContainer />
             <section className='w-full h-[100vh] flex flex-col gap-3 items-center justify-center mt-14'>
                 <form className='w-3/6 flex flex-col rounded-md items-center justify-center p-4 bg-blue-text-color gap-3'>
                     <div className='flex flex-col items-center justify-center p-5'>
@@ -60,11 +75,6 @@ const Confirmdeposit = () => {
                     <input className='w-[80%] h-[55px] bg-logo-color text-xl text-white font-sans font-bold capitalize p-3 rounded-lg cursor-pointer hover:scale-95 transition-all duration-700' type='submit' name='submit' value='submit' onClick={handlePaymentsubmit} />
                 </form>
             </section>
-            <aside className='w-[50%] h-[50%] hidden flex-col items-center justify-center bg-blue-text-color rounded-md p-5 gap-3'>
-                <img src={like} alt='thumb img' className='w-[150px] h-[150px] rounded-full' />
-                <h3 className='text-white font-bold font-sans text-center text-xl'>Thank you for confirming your payment</h3>
-                <button className='w-fit h-fit p-3 text-center text-white text-lg capitalize bg-logo-color rounded-md m-3 hover:scale-95 transition-all duration-700'>Back to dashboard</button>
-            </aside>
         </main>
     )
 }
