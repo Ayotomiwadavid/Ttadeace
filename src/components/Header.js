@@ -7,7 +7,7 @@ import cancelBtn from '../images/large cancel btn.png'
 const Header = (props) => {
   let [showMenu, setShowMenu] = useState(false);
   let { navItems } = props
-  let [showNavItems, setShowNavItems] = useState(navItems)
+  let [showNavItems] = useState(navItems)
 
   let hamdleMenuClick = () => {
     setShowMenu(!showMenu);

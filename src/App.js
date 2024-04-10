@@ -14,7 +14,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/sign/:status' element={<SignUp />} />
       <Route path='/dashboard' element={<Dashboard />}/>
-      <Route path='/deposit/:user' element={<Deposit />}/>
+      <Route path='/deposit/' element={<Deposit />}/>
       <Route path='/deposit/confirm' element={<Confirmdeposit />}/>
       <Route path='*' element={<Pagenotfound />}/>
     </Routes>

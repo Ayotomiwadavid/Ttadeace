@@ -2,12 +2,11 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth, db } from '../config/firebase.config';
 import { toast } from 'react-toastify';
-import { collection, addDoc, getDocs} from "firebase/firestore";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
 
 
 let transactionHistory = []
-
 
 //SAVING USER AFTER SIGNUP
 export const saveUser = async (userData) => {
@@ -17,16 +16,16 @@ export const saveUser = async (userData) => {
     var atIndex = mail.indexOf('@');
     var newUserEmail = email.substring(0, atIndex);
     try {
-        await addDoc(collection(db, "users"), {
+        await setDoc(doc(db, "users", newUserEmail), {
             userId: newUserEmail,
             userName: name,
             userEmail: email,
             userPassword: password,
             userHistory: JSON.stringify(transactionHistory),
         });
-      } catch (e) {
+    } catch (e) {
         console.error("Error adding document: ", e);
-      }
+    }
 }
 
 //Sign in or login fuction
@@ -58,16 +57,60 @@ export let signUp = async (userData) => {
 }
 
 //READING USER DATA FOR UPDATES
-export let readUserData = async (email, setUser) => {
-    var atIndex = email.indexOf("@");
-    var newUserEmail = email.substring(0, atIndex);
-    const querySnapshot = await getDocs(collection(db, "users"));
-    let targetedUser = querySnapshot.Find((user) => {
-        user.userId = newUserEmail;
-    })
-    setUser(targetedUser);
-    console.log(targetedUser);
-    // querySnapshot.forEach((doc) => {
-    //     let targetedUser = doc.find
-    // });
-  };
+export let readUserData = async (accountuser, setUser) => {
+    var atIndex = accountuser.indexOf('@');
+    var newUserEmail = accountuser.substring(0, atIndex);
+    const docRef = doc(db, "users", newUserEmail);
+    const docSnapshot = await getDoc(docRef)
+    if (docSnapshot.exists) {
+        const userData = docSnapshot.data();
+        let userInitial = userData.userName;
+        setUser(userInitial)
+        console.log(userData)
+      } else {
+        console.log("User document does not exist.");
+      }
+};
+
+//SAVING TRANSACTION HISTORY
+export let setNewUserDoc = async (user, history) => {
+    let {transactionId, dateTimeStamp, amountDeposited, state} = history
+    transactionHistory.push(
+        {
+            userTransactionId: transactionId,
+            transanctionDate: dateTimeStamp,
+            userDeposit: amountDeposited,
+            transactionStatus: state
+        }
+    )
+
+    console.log(transactionHistory)
+
+    var atIndex = user.indexOf('@');
+    var newUserEmail = user.substring(0, atIndex);
+    const docRef = doc(db, "users", newUserEmail);
+    const docSnapshot = await getDoc(docRef)
+    if (docSnapshot.exists) {
+        const userData = docSnapshot.data();
+        let userInitial = userData.userName;
+        let Password = userData.userPassword;
+        if (transactionHistory && transactionHistory.length > 0) {
+            try {
+                await setDoc(doc(db, "users", newUserEmail), {
+                    userId: newUserEmail,
+                    userName: userInitial,
+                    userEmail: user,
+                    userPassword: Password,
+                    userHistory: transactionHistory,
+                });
+            } catch (error) {
+                console.log('An error occured:' + error)
+            }
+        }else {
+            console.log("Transaction history is empty or undefined.");
+        }
+        console.log(userData)
+      } else {
+        console.log("User document does not exist.");
+      }
+}
