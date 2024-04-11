@@ -22,7 +22,6 @@ const Balance = (props) => {
           const btcEarned = 1000;
           setBalance(btcEarned)
           setbtcExchangeRate(btcRate * btcEarned);
-          console.log(btcRate * 1000)
         })
         .catch(err => {
           console.log(err)

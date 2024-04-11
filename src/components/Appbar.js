@@ -8,7 +8,6 @@ import { readUserData } from "../config/controller";
 const Appbar = () => {
   let [userName, setUser] = useState("");
   let usernameIndex = userName.trim().indexOf(" ");
-  console.log(usernameIndex)
   let user = userName.substring(0, usernameIndex)
 
   //setting use effect for fetching user details

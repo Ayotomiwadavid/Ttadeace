@@ -56,6 +56,15 @@ export let signUp = async (userData) => {
         })
 }
 
+export let signOut = () =>{
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        toast.success('sign out successfull')
+    }).catch((error) => {
+        toast.error('An error occured: ' + error)
+      });
+}
+
 //READING USER DATA FOR UPDATES
 export let readUserData = async (accountuser, setUser) => {
     var atIndex = accountuser.indexOf('@');
@@ -66,7 +75,6 @@ export let readUserData = async (accountuser, setUser) => {
         const userData = docSnapshot.data();
         let userInitial = userData.userName;
         setUser(userInitial)
-        console.log(userData)
     } else {
         console.log("User document does not exist.");
     }
@@ -74,6 +82,8 @@ export let readUserData = async (accountuser, setUser) => {
 
 //SAVING TRANSACTION HISTORY
 export let setNewUserDoc = async (user, history) => {
+
+    console.log(history)
     
     //GETTING ALL TRANSACTION DATAS
     let { transactionId, dateTimeStamp, amountDeposited, state } = history
@@ -92,6 +102,7 @@ export let setNewUserDoc = async (user, history) => {
     var atIndex = user.indexOf('@');
     var newUserEmail = user.substring(0, atIndex);
     const docRef = doc(db, "users", newUserEmail);
+    console.log(transactionHistory)
     let stringifyHistory = JSON.stringify(transactionHistory)
 
     //UPDATING USERHISTORY
