@@ -34,8 +34,8 @@ const Balance = (props) => {
   }, [])
 
   return (
-    <div className='w-full rounded-lg bg-neon-blue mb-5 md:flex-row flex gap-5 items-center justify-center md:justify-between px-3 overflow-auto h-fit md:gap-10'>
-      <div className='ml-[340px] py-5 w-full flex-shrink-0 md:w-1/2 relative'>
+    <div className='w-full rounded-lg bg-neon-blue mb-5 md:flex-row flex gap-5 items-center justify-center md:justify-between max-h-[350px] px-3 overflow-auto h-fit md:gap-3'>
+      <div className='ml-[340px] md:ml-0 py-5 w-full flex-shrink-0 md:w-[45%] relative'>
         <img src={cardImage} alt='card img' className='h-[200px] w-full' />
         <div className='h-[200px] w-full rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between items-center'>
           <div className='w-full items-center justify-between flex px-5'>
@@ -57,7 +57,7 @@ const Balance = (props) => {
         </div>
       </div>
 
-      <div className=' py-5 w-full flex-shrink-0 md:w-1/2 relative'>
+      <div className=' py-5 w-full flex-shrink-0 md:w-[45%] relative'>
         <img src={cardImage} alt='card img' className='h-[200px] w-full' />
         <div className='h-[200px] w-full rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between items-center'>
           <div className='w-full items-center justify-between flex px-5'>
@@ -78,16 +78,6 @@ const Balance = (props) => {
           <p className='text-white font-bold p-10 px-5 w-full text-left text-2xl uppercase'>{btcExchangeRate.toString().substring(0, 5)} btc</p>
         </div>
       </div>
-      {/* <Balancecard
-        balance= {balance}
-        cardDescription='Your Balance From Your Last Deposit'
-        currencySymbol='usd'
-      /> */}
-      {/* <Balancecard
-        balance=
-        cardDescription=''
-        currencySymbol='btc'
-      /> */}
     </div>
   )
 }

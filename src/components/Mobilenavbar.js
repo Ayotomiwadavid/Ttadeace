@@ -13,23 +13,27 @@ const Mobilenavbar = () => {
         <Mobilenav
           imageSrc={home}
           navName='home'
+          buttonType='link'
         />
       </Link>
       <Link to='/withdraw'>
         <Mobilenav
           imageSrc={giftcard}
           navName='withdraw'
+          buttonType='link'
         />
       </Link>
       <Link to='/user-history'>
         <Mobilenav
           imageSrc={transaction}
           navName='transactions'
+          buttonType='link'
         />
       </Link>
       <Mobilenav
         imageSrc={logOut}
         navName='log out'
+        buttonType='logout'
       />
     </div>
   )

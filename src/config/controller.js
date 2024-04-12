@@ -1,5 +1,5 @@
 //Importing neccessary firebase dependencies
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
 import { auth, db } from '../config/firebase.config';
 import { toast } from 'react-toastify';
 import { getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
@@ -56,13 +56,13 @@ export let signUp = async (userData) => {
         })
 }
 
-export let signOut = () =>{
+export let signOutFunc = () => {
     signOut(auth).then(() => {
         // Sign-out successful.
-        toast.success('sign out successfull')
+        console.log('sign out successfull')
     }).catch((error) => {
-        toast.error('An error occured: ' + error)
-      });
+        console.log('An error occured: ' + error)
+    });
 }
 
 //READING USER DATA FOR UPDATES
@@ -84,7 +84,7 @@ export let readUserData = async (accountuser, setUser) => {
 export let setNewUserDoc = async (user, history) => {
 
     console.log(history)
-    
+
     //GETTING ALL TRANSACTION DATAS
     let { transactionId, dateTimeStamp, amountDeposited, state } = history
 

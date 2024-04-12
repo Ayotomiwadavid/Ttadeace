@@ -13,7 +13,7 @@ const SignIn = () => {
   }
 
   return (
-    <div className='w-full'>
+    <div className='bg-overallBg w-full'>
       <Header
         navItems={false}
       />
