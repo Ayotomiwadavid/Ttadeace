@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Mobilenavbar from '../components/Mobilenavbar'
 
 
 const Confirmdeposit = () => {
@@ -75,6 +76,7 @@ const Confirmdeposit = () => {
                     <input className='md:w-[80%] w-full h-[55px] bg-logo-color text-xl text-white font-sans font-bold capitalize p-3 rounded-lg cursor-pointer hover:scale-95 transition-all duration-700' type='submit' name='submit' value='submit' onClick={handlePaymentsubmit} />
                 </form>
             </section>
+            <Mobilenavbar />
         </main>
     )
 }
