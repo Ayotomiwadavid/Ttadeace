@@ -16,7 +16,7 @@ const Balancecard = (props) => {
     });
   }, []);
   return (
-    <div className=' py-5 h-full md:w-1/2 relative'>
+    <div className=' py-5 w-full flex-shrink-0 md:w-1/2 relative'>
       <img src={cardImage} alt='card img' className='h-[200px] w-full' />
       <div className='h-[200px] w-full rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between items-center'>
         <div className='w-full items-center justify-between flex px-5'>
