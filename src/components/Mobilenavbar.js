@@ -21,10 +21,12 @@ const Mobilenavbar = () => {
           navName='withdraw'
         />
       </Link>
-      <Mobilenav
-        imageSrc={transaction}
-        navName='transactions'
-      />
+      <Link to='/user-history'>
+        <Mobilenav
+          imageSrc={transaction}
+          navName='transactions'
+        />
+      </Link>
       <Mobilenav
         imageSrc={logOut}
         navName='log out'
