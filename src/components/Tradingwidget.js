@@ -18,10 +18,6 @@ const Tradingwidget = () => {
       });
     
       document.getElementsByClassName('tradingview-widget-container__widget')[0].appendChild(MarketValues);
-    
-      return () => {
-        document.getElementsByClassName('tradingview-widget-container__widget')[0].removeChild(MarketValues);
-      };
     }, []);
   return (
     <div className="tradingview-widget-container w-full">

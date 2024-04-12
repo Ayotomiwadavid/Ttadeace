@@ -31,10 +31,6 @@ const TradingViewChart = () => {
     });
 
     document.getElementsByClassName('tradingview-widget-container__widget')[0].appendChild(TradingView);
-
-    return () => {
-      document.getElementsByClassName('tradingview-widget-container__widget')[0].removeChild(TradingView);
-    };
   }, []);
 
   return (
