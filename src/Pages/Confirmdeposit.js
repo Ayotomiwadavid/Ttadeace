@@ -63,16 +63,16 @@ const Confirmdeposit = () => {
         <main className='flex flex-col items-center justify-center'>
             <Appbar />
             <ToastContainer />
-            <section className='w-full h-[100vh] flex flex-col gap-3 items-center justify-center mt-14'>
-                <form className='w-3/6 flex flex-col rounded-md items-center justify-center p-4 bg-blue-text-color gap-3'>
-                    <div className='flex flex-col items-center justify-center p-5'>
+            <section className='w-full h-[100vh] flex flex-col gap-3 items-center justify-center md:mt-14'>
+                <form className='md:w-3/6 w-[90%] flex flex-col rounded-md items-center justify-center p-4 bg-blue-text-color gap-3'>
+                    <div className='flex flex-col items-center justify-center p-2  md:p-5'>
                         <h1 className='font-bold font-sans text-2xl text-logo-color capitalize'>Confirm your deposit</h1>
                         <p className='font-light font-sans text-center text-white text-lg capitalize'>After Making Deposit to the given Wallet Address, Use this form to track your deposit</p>
                     </div>
-                    <input className='w-[80%] h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='fullName' placeholder='full name' />
-                    <input className='w-[80%] h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='amount' placeholder='Amount Deposited ($)' value={amountValue} onChange={handleAmount} />
-                    <input className='w-[80%] h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='transactiondescription' placeholder='give narration' />
-                    <input className='w-[80%] h-[55px] bg-logo-color text-xl text-white font-sans font-bold capitalize p-3 rounded-lg cursor-pointer hover:scale-95 transition-all duration-700' type='submit' name='submit' value='submit' onClick={handlePaymentsubmit} />
+                    <input className='md:w-[80%] w-full h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='fullName' placeholder='full name' />
+                    <input className='md:w-[80%] w-full h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='amount' placeholder='Amount Deposited ($)' value={amountValue} onChange={handleAmount} />
+                    <input className='md:w-[80%] w-full h-[45px] bg-white text-lg text-logo-color rounded-md p-4 border-0 outline-none placeholder:text-xl placeholder:capitalize' type='text' name='transactiondescription' placeholder='give narration' />
+                    <input className='md:w-[80%] w-full h-[55px] bg-logo-color text-xl text-white font-sans font-bold capitalize p-3 rounded-lg cursor-pointer hover:scale-95 transition-all duration-700' type='submit' name='submit' value='submit' onClick={handlePaymentsubmit} />
                 </form>
             </section>
         </main>
