@@ -3,11 +3,12 @@ import Appbar from '../components/Appbar'
 import Mobilenavbar from '../components/Mobilenavbar'
 import MainTable from '../components/Table'
 import { Link } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
 
 const History = () => {
   return (
     <main className='bg-overallBg h-lvh flex items-center justify-between w-full overflow-hidden relative'>
-      {/* <Sidebar /> */}
+      <ToastContainer />
       <aside className='w-[100%] relative h-[100%] flex flex-col items-center justify-center'>
         <Appbar />
         <section className='w-full h-[100vh] px-5 flex flex-col items-center justify-start mt-[70px] md:mt-[100px]'>

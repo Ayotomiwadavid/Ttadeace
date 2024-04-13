@@ -14,51 +14,62 @@ const Confirmdeposit = () => {
     const navigate = useNavigate()
 
     //STATE FOR AMOUNT CONTROLLED COMPONENT
-    const [amountValue, setamountValue] = useState(''); 
+    const [amountValue, setamountValue] = useState('');
     const [user, setuser] = useState('')
-    const [history, setHistory] = useState('')
+    const [shouldNavigate, setShouldNavigate] = useState(false)
 
-    let TransactionDate = new Date();
-    let transactionDay = TransactionDate.getDay();
-    let transactionMonth = TransactionDate.getMonth();
-    let transactionyear = TransactionDate.getFullYear();
-    let transactionHour = TransactionDate.getHours();
-    let transactionMinute = TransactionDate.getMinutes();
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((userCred) => {
+            if (userCred) {
+                setuser(userCred.email);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     //HANDLING AMOUNT
     let handleAmount = (event) => {
-        let value = event.target.value;
-        setamountValue(value);
+        setamountValue(event.target.value);
+    }
+
+    if (shouldNavigate) {
+        navigate(`/dashboard`, { replace: true })
     }
 
     //SAVING TRANSACTION HISTORY
     let handlePaymentsubmit = (event) => {
         event.preventDefault();
-        setHistory(
-            {
-                transactionId: user+transactionDay+transactionMonth+transactionyear,
-                dateTimeStamp: `${transactionDay}\\${transactionMonth}\\${transactionyear} ${transactionHour}:${transactionMinute}`,
-                amountDeposited: amountValue,
-                state: true
-            }
-        )
-        if (amountValue < 1000) {
-            toast.error('Sorry, Our payment starts from 1000usd');
-        }else{
-            toast.success('Thanks for confirming your payment');
-            setNewUserDoc(user, history); 
-            setInterval(() => {
-              navigate(`/dashboard`, { replace: true })
-            }, 3000);
+        let TransactionDate = new Date();
+        const transactionId = `${user}${TransactionDate.getHours()}${TransactionDate.getMinutes()}`
+        const dateTimeStamp = `${TransactionDate.getDay()}:${TransactionDate.getMonth()}:${TransactionDate.getFullYear()}:${TransactionDate.getHours()}:${TransactionDate.getMinutes()}`
+
+        if (!user || !amountValue) {
+            toast.error('Please fill in all fields.');
+            return;
         }
+
+        if (parseFloat(amountValue) < 1000) {
+            toast.error('Sorry, our payment starts from $1000.');
+            return;
+        }
+
+        const history = {
+            transactionId,
+            dateTimeStamp,
+            amountDeposited: amountValue,
+            state: true
+        };
+
+        toast.success('Thanks for confirming your payment');
+        setNewUserDoc(user, history);
+        setShouldNavigate(true);
     }
 
     useEffect(() => {
-        auth.onAuthStateChanged((userCred) => {
-            let acountUser = userCred.email;
-            setuser(acountUser)
-        });
-    }, [])
+        if (shouldNavigate) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [shouldNavigate, navigate]);
 
     return (
         <main className='flex flex-col items-center justify-center'>

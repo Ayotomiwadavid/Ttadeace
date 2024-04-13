@@ -12,16 +12,16 @@ import Confirmdeposit from './Pages/Confirmdeposit';
 function App() {
   return (
     <main>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/sign/:status' element={<SignUp />} />
-      <Route path='/dashboard' element={<Dashboard />}/>
-      <Route path='/deposit/' element={<Deposit />}/>
-      <Route path='/user-history' element={<History />}/>
-      <Route path='/withdraw' element={<Withdraw />}/>
-      <Route path='/deposit/confirm' element={<Confirmdeposit />}/>
-      <Route path='*' element={<Pagenotfound />}/>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/sign/:status' element={<SignUp />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/deposit/' element={<Deposit />} />
+        <Route path='/user-history' element={<History />} />
+        <Route path='/withdraw' element={<Withdraw />} />
+        <Route path='/deposit/confirm' element={<Confirmdeposit />} />
+        <Route path='*' element={<Pagenotfound />} />
+      </Routes>
     </main>
   );
 }

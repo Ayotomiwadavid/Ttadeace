@@ -12,7 +12,6 @@ let transactionHistory = []
 export const saveUser = async (userData) => {
     const { email, password, name } = userData;
     let mail = email
-    console.log(email)
     var atIndex = mail.indexOf('@');
     var newUserEmail = email.substring(0, atIndex);
     try {
@@ -21,7 +20,7 @@ export const saveUser = async (userData) => {
             userName: name,
             userEmail: email,
             userPassword: password,
-            userHistory: JSON.stringify(transactionHistory),
+            userHistory: transactionHistory,
         });
     } catch (e) {
         console.error("Error adding document: ", e);
@@ -52,7 +51,7 @@ export let signUp = async (userData) => {
             saveUser(userData)
         })
         .catch((err) => {
-            toast.error('failed to create your account')
+            toast.error('failed to create your account:' + err)
         })
 }
 
@@ -73,8 +72,7 @@ export let readUserData = async (accountuser, setUser) => {
     const docSnapshot = await getDoc(docRef)
     if (docSnapshot.exists) {
         const userData = docSnapshot.data();
-        let userInitial = userData.userName;
-        setUser(userInitial)
+        setUser(userData)
     } else {
         console.log("User document does not exist.");
     }
@@ -82,8 +80,6 @@ export let readUserData = async (accountuser, setUser) => {
 
 //SAVING TRANSACTION HISTORY
 export let setNewUserDoc = async (user, history) => {
-
-    console.log(history)
 
     //GETTING ALL TRANSACTION DATAS
     let { transactionId, dateTimeStamp, amountDeposited, state } = history
@@ -102,13 +98,11 @@ export let setNewUserDoc = async (user, history) => {
     var atIndex = user.indexOf('@');
     var newUserEmail = user.substring(0, atIndex);
     const docRef = doc(db, "users", newUserEmail);
-    console.log(transactionHistory)
-    let stringifyHistory = JSON.stringify(transactionHistory)
 
     //UPDATING USERHISTORY
     try {
         await updateDoc(docRef, {
-            userHistory: stringifyHistory
+            userHistory: transactionHistory
         });
     } catch (error) {
         console.log('An error occured:' + error)

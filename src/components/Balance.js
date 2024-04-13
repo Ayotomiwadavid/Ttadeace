@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Balancecard from './Balancecard'
 import cardImage from '../images/bg-card-front.png'
 import { Add } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import { auth } from '../config/firebase.config';
+import { readUserData } from '../config/controller';
 
 const Balance = (props) => {
   const [btcExchangeRate, setbtcExchangeRate] = useState('');
@@ -22,8 +23,8 @@ const Balance = (props) => {
         .then(res => res.json())
         .then(data => {
           const btcRate = data.rates.BTC
-          const btcEarned = 1000;
-          setBalance(btcEarned)
+          const btcEarned = balance;
+          console.log(btcEarned)
           setbtcExchangeRate(btcRate * btcEarned);
         })
         .catch(err => {
@@ -32,6 +33,30 @@ const Balance = (props) => {
     }
     fetchQuote()
   }, [])
+
+  let [user, setUser] = useState({});
+  const {userHistory} = user
+  let mybalance = 0
+  useEffect(() => {
+    let mybalance = 0;
+    if (Array.isArray(userHistory)) {
+      userHistory.forEach(history => {
+        mybalance += Number(history.userDeposit);
+      });
+      // Update the state with the final balance value
+      setBalance(mybalance);
+    } else {
+      console.log('userHistory is not defined or is not an array');
+    }
+  }, [userHistory]);
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged((userCred) => {
+      let acountUser = userCred.email;
+      readUserData(acountUser, setUser);
+    });
+  }, []);
 
   return (
     <div className='w-full rounded-lg bg-neon-blue mb-5 md:flex-row flex gap-5 items-center justify-center md:justify-between max-h-[350px] px-3 overflow-auto h-fit md:gap-3'>
