@@ -65,18 +65,32 @@ export let signOutFunc = () => {
 }
 
 //READING USER DATA FOR UPDATES
-export let readUserData = async (accountuser, setUser) => {
-    var atIndex = accountuser.indexOf('@');
-    var newUserEmail = accountuser.substring(0, atIndex);
-    const docRef = doc(db, "users", newUserEmail);
-    const docSnapshot = await getDoc(docRef)
-    if (docSnapshot.exists) {
-        const userData = docSnapshot.data();
-        setUser(userData)
+export const readUserData = async (accountUser, setUser) => {
+    // Check if accountUser is a string before proceeding
+    if (typeof accountUser === 'string') {
+        // Perform indexOf operation
+        const atIndex = accountUser.indexOf('@');
+        if (atIndex !== -1) {
+            var newUserEmail = accountUser.substring(0, atIndex);
+            const docRef = doc(db, "users", newUserEmail);
+            const docSnapshot = await getDoc(docRef);
+            if (docSnapshot.exists) {
+                const userData = docSnapshot.data();
+                setUser(userData)
+            } else {
+                console.log("User document does not exist.");
+            }
+            console.log("Username:", newUserEmail);
+            // Assuming setUser is a function to set the user state
+            setUser(newUserEmail);
+        } else {
+            console.log("Email does not contain '@'");
+        }
     } else {
-        console.log("User document does not exist.");
+        console.log("accountUser is not a valid string.");
     }
-};
+}
+
 
 //SAVING TRANSACTION HISTORY
 export let setNewUserDoc = async (user, history) => {
