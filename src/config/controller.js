@@ -80,9 +80,6 @@ export const readUserData = async (accountUser, setUser) => {
             } else {
                 console.log("User document does not exist.");
             }
-            console.log("Username:", newUserEmail);
-            // Assuming setUser is a function to set the user state
-            setUser(newUserEmail);
         } else {
             console.log("Email does not contain '@'");
         }

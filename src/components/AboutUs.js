@@ -3,7 +3,6 @@ import Ultimatesvg from '../images/ultimate-svg.png'
 import outstandingsvg from '../images/outstanding-svg.png'
 import competitivesvg from '../images/competitive-svg.png'
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
-import { Link } from 'react-router-dom';
 import './about.css'
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
@@ -54,7 +53,7 @@ const AboutUs = () => {
                         <div className='flex items-center justify-between w-4/5 mr-5'>
                             <div className=' shrink-0 md:w-1/3 flex pl-10 p-5 items-center justify-between gap-6'>
                                 <h5 className='text-3xl text-logo-color capitalize font-bold font-sans '>USD</h5>
-                                <h4 className='text-4xl text-blue-text-color font-bold font-sans'>10,000</h4>
+                                <h4 className='text-4xl text-blue-text-color font-bold font-sans'>1,000</h4>
                             </div>
                             {/* Exchange Logo */}
                             <div className=' shrink-0 flex items-center justify-center h-[50px] w-[50px] rounded-full bg-logo-color'>
@@ -66,10 +65,10 @@ const AboutUs = () => {
                             </div>
                             <div className=' shrink-0 md:w-1/3 flex pl-10  p-5 items-center justify-between gap-6'>
                                 <h5 className='text-3xl text-logo-color capitalize font-bold font-sans '>BTC</h5>
-                                <h4 className='text-4xl text-blue-text-color font-bold font-sans'>1.51352</h4>
+                                <h4 className='text-4xl text-blue-text-color font-bold font-sans'>0.015</h4>
                             </div>
                         </div>
-                        <Getstarted 
+                        <Getstarted
                             content="get started"
                         />
                     </div>
@@ -80,7 +79,7 @@ const AboutUs = () => {
                                 <p className='text-left text-white font-sans font-light uppercase text-lg'>6,530.0001</p>
                             </div>
                             <div className='flex items-center justify-center p-3 h-full'>
-                                <SouthEastIcon 
+                                <SouthEastIcon
                                     style={{
                                         fontWeight: "lighter",
                                         fontSize: '25px',
@@ -96,7 +95,7 @@ const AboutUs = () => {
                                 <p className='text-left text-white font-sans font-light uppercase text-lg'>5,807.88</p>
                             </div>
                             <div className='flex items-center justify-center p-3 h-full'>
-                                <SouthEastIcon 
+                                <SouthEastIcon
                                     style={{
                                         fontWeight: "lighter",
                                         fontSize: '25px',
@@ -112,7 +111,7 @@ const AboutUs = () => {
                                 <p className='text-left text-white font-sans font-light uppercase text-lg'>6,530.001</p>
                             </div>
                             <div className='flex items-center justify-center p-3 h-full'>
-                                <NorthEastIcon 
+                                <NorthEastIcon
                                     style={{
                                         fontWeight: "lighter",
                                         fontSize: '25px',
@@ -128,7 +127,7 @@ const AboutUs = () => {
                                 <p className='text-left text-white font-sans font-light uppercase text-lg'>5,807.88</p>
                             </div>
                             <div className='flex items-center justify-center p-3 h-full'>
-                                <SouthEastIcon 
+                                <SouthEastIcon
                                     style={{
                                         fontWeight: "lighter",
                                         fontSize: '25px',
@@ -144,7 +143,7 @@ const AboutUs = () => {
                                 <p className='text-left text-white font-sans font-light uppercase text-lg'>6,530.0001</p>
                             </div>
                             <div className='flex items-center justify-center p-3 h-full'>
-                                <NorthEastIcon 
+                                <NorthEastIcon
                                     style={{
                                         fontWeight: "lighter",
                                         fontSize: '25px',

@@ -10,14 +10,18 @@ import Paper from '@mui/material/Paper';
 
 //Importing read user data to get history
 import { readUserData } from '../config/controller';
+import { auth } from '../config/firebase.config';
 
 const MainTable = () => {
     const [user, setUser] = useState('')
 
     //Call the function on load to get the history
     useEffect(() => {
-        readUserData(setUser)
-    }, [])
+        auth.onAuthStateChanged((userCred) => {
+          let acountUser = userCred.email;
+          readUserData(acountUser, setUser);
+        });
+      }, []);
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -57,11 +61,10 @@ const MainTable = () => {
                     <TableBody>
                         {user.userHistory && allHistory.map((details) => (
                             <StyledTableRow key={details.userTransactionId}>
-                                <StyledTableCell component="th" scope="row">
-                                    {details.transanctionDate}
-                                </StyledTableCell>
+                            <StyledTableCell component="th" scope="row">{details.userTransactionId}</StyledTableCell>
+                                <StyledTableCell component="th" scope="row">{details.transanctionDate}</StyledTableCell>
                                 <StyledTableCell align="right">{details.userDeposit}</StyledTableCell>
-                                <StyledTableCell align="right">{details.transactionStatus}</StyledTableCell>
+                                <StyledTableCell align="right">success</StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>

@@ -7,8 +7,11 @@ import { readUserData } from "../config/controller";
 
 const Appbar = () => {
   let [userDeatails, setUser] = useState("");
-  const { userName, ...remains } = userDeatails
+  const { userName} = userDeatails
   const [ realUserName, setRealUserName]  = useState('')
+  //for Date at the top
+  let date = new Date();
+  let fullDate = `${date.getMonth()} ${date.getDate()} ${date.getFullYear()}`
 
   //setting use effect for fetching user details
   useEffect(() => {
@@ -36,7 +39,7 @@ const Appbar = () => {
   } else {
     console.log("userName is not a valid string or is empty.");
   }
-  }, [userDeatails])
+  }, [userName])
 
   return (
     <div className="border-b-[1px] bg-overallBg border-solid border-border-color w-full md:p-2 flex items-center justify-between absolute top-0 right-0">
@@ -61,7 +64,7 @@ const Appbar = () => {
               fontSize: "30px"
             }}
           />
-          <p className="text-logo-color capitalize">mar, 09 2024</p>
+          <p className="text-logo-color capitalize">{fullDate}</p>
         </div>
         <div className="flex p-2 cursor-pointer items-center justify-center border-[1px] border-logo-color rounded-3xl w-[170px] m-4">
           <AccountCircleIcon

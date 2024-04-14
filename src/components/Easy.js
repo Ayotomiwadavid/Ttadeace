@@ -12,40 +12,40 @@ const Easy = () => {
         <ListComponent
             tag="h3"
             tagContent= '01.'
-            listTitlle="tick market data"
-            listDescrion='instant order book update with each change'
+            listTitlle="Quick Sign-Up"
+            listDescrion="it'll take you 2mins tops"
           />
         </li>
         <li className=' m-[5px] md:m-[15px] w-full items-center justify-start'>
         <ListComponent
             tag="h3"
             tagContent= '02.'
-            listTitlle="tick market data"
-            listDescrion='instant order book update with each change'
+            listTitlle="Secure Deposit"
+            listDescrion='E-wallet transfer min $1,000'
           />
         </li>
         <li className=' m-[5px] md:m-[15px] w-full items-center justify-start'>
         <ListComponent
             tag="h3"
             tagContent= '03.'
-            listTitlle="tick market data"
-            listDescrion='instant order book update with each change'
+            listTitlle="Launch"
+            listDescrion='Enjoy your automated trading experience'
           />
         </li>
         <li className=' m-[5px] md:m-[15px] w-full items-center justify-start'>
         <ListComponent
             tag="h3"
             tagContent= '04.'
-            listTitlle="tick market data"
-            listDescrion='instant order book update with each change'
+            listTitlle="Seamless user experience"
+            listDescrion="You'll enjoy navigating our web app"
           />
         </li>
         <li className=' m-[5px] md:m-[15px] w-full items-center justify-start'>
         <ListComponent
             tag="h3"
             tagContent= '05.'
-            listTitlle="tick market data"
-            listDescrion='instant order book update with each change'
+            listTitlle="secured user Details"
+            listDescrion='Your details are secured with tradeace'
           />
         </li>
         <li className='w-full my-[15px] mx-[10px] flex items-center justify-center md:justify-start'>

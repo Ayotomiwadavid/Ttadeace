@@ -32,11 +32,10 @@ const Balance = (props) => {
         })
     }
     fetchQuote()
-  }, [])
+  }, [balance])
 
   let [user, setUser] = useState({});
   const {userHistory} = user
-  let mybalance = 0
   useEffect(() => {
     let mybalance = 0;
     if (Array.isArray(userHistory)) {

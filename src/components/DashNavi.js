@@ -2,7 +2,6 @@ import React from 'react'
 
 const DashNavi = (props) => {
     let { navigatorName, navigatorIcon, type, onClick, status} = props
-
     let CustomIcon = navigatorIcon;
 
     return (

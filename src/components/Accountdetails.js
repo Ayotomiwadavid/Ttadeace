@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import QrCode from '../images/qrcode.svg'
+import QrCode from '../images/Qrcode.jpg'
 import Btclogo from '../images/bitcoin.png'
 import InfoIcon from '@mui/icons-material/Info';
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
@@ -32,7 +32,7 @@ const Accountdetails = () => {
     fetchQuote()
   }, [])
 
-  const btcAdress = 'jdiwenkwehiowefbjkd78383tkla9292jenhdbj';
+  const btcAdress = 'bc1ql38t9duyuxzwmwpnpl6gfur79mg7e4ur2zewxc';
   
   let copyToClipboard = () =>{
       navigator.clipboard.writeText(btcAdress);
@@ -45,7 +45,7 @@ const Accountdetails = () => {
         <div className='md:w-[35%] w-full md:mt-0 mt-[350px] md:h-full flex flex-col items-center md:items-start justify-center md:gap-8 gap-4'>
           <img src={QrCode} alt='qrcode img' className='w-[90%] h-[60%]' />
           <p className='w-ful text-center md:text-left text-md text-logo-color leading-6'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Scan the QR Code in your mobile banking app, confirm the amount, review, and confirm. Wait for the confirmation message in your app.
           </p>
         </div>
         <div className='md:w-[60%] w-full h-full flex flex-col items-center justify-center'>
@@ -61,7 +61,7 @@ const Accountdetails = () => {
             /> Send BTC to this adress only</h1>
             <p className='text-lg font-sans text-logo-color leading-7 items-center justify-start w-full'>
               <span className='font-bold'>Trade Ace accept deposit starting from {btcExchangeRate} BTC</span>, 
-              which is equivalent to 1,000USD. And make sure to be carefull with the trasfer, otherwise you may lose your capital to unknown adress.
+              which is equivalent to 1,000USD. Make sure to be careful while making the payment, otherwise you may lose your capital to unknown adress.
             </p> 
           </div>
         </div>
